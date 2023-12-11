@@ -3,25 +3,26 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+    --primary: #00799f;
+    --rounded: 5px;
+    --rounded-md: 10px
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.button {
+    display: block;
+    background-color: var(--primary);
+    color: white;
+    min-width: 65px;
+    width: fit-content;
+    padding: 5px;
+    text-align: center;
+    border-radius: var(--rounded);
+    border: 2px solid var(--primary);
+
+    transition: all 0.2s;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.button:hover {
+    background-color: white;
+    color: var(--primary);
 }
