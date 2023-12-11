@@ -28,8 +28,8 @@ export default function Dashboard() {
             <header>
                 <h1>Dashboard</h1>
                 <a className="bg-primary rounded-[50%] p-[5px] text-white border-2 border-primary hover:text-primary hover:bg-white">
-                    {user.firstName[0].toUpperCase()}
-                    {user.lastName[0].toUpperCase()}
+                    {user.firstName[0]}
+                    {user.lastName[0]}
                 </a>
             </header>
             <main></main>
