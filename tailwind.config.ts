@@ -23,6 +23,10 @@ const config: Config = {
         green: {
           DEFAULT: '#028202',
         },
+        blue: {
+          dark: '#00799F',
+          light: '#BFDEE8'
+        }
       }
     },
   },

@@ -9,13 +9,12 @@
     --input-underline: 2px solid #51726b;
 }
 
-a.button,
-button {
+a.button {
     display: block;
     background-color: var(--primary);
     color: white;
     min-width: 65px;
-    width: fit-content;
+    width: 100%;
     padding: 5px;
     text-align: center;
     border-radius: var(--rounded);
@@ -25,8 +24,7 @@ button {
     transition: all 0.2s;
 }
 
-a.button:hover,
-button:hover {
+a.button:hover {
     background-color: white;
     color: var(--primary);
 }
