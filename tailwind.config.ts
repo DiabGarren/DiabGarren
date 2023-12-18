@@ -27,6 +27,11 @@ const config: Config = {
           dark: '#00799F',
           light: '#BFDEE8'
         }
+      },
+      borderRadius: {
+        DEFAULT: '5px',
+        'md': '10px',
+        'lr': '15px',
       }
     },
   },
