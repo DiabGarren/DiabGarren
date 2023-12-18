@@ -12,6 +12,10 @@ export async function GET() {
 
         const user = await User.findOne({ _id: userId?.value });
 
+        if (!user) {
+            return createErrorResponse("No user found", 500);
+        }
+
         let response = { status: "success", data: user };
 
         return new NextResponse(JSON.stringify(response), {

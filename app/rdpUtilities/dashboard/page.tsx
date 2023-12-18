@@ -21,6 +21,10 @@ export default function Dashboard() {
             fetch(process.env.NEXT_PUBLIC_API_URL + "/rdpUtilities/user")
                 .then((res) => res.json())
                 .then((data) => {
+                    console.log(data);
+                    if (data.status === "error") {
+                        window.location.href = "/rdpUtilities/";
+                    }
                     setUser(data.data);
                 });
         };
