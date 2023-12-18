@@ -18,7 +18,7 @@ export default function NavMenu(props: any) {
         <div className="flex flex-col w-[200px] text-[1.2rem]">
             {buttons.map((button: string) => {
                 return (
-                    <a className="bg-blue-dark hover:bg-blue-light text-white hover:text-blue-dark p-[5px_10px] cursor-pointer first:rounded-[10px_10px_0_0] last:rounded-[0_0_10px_10px]">
+                    <a className="bg-blue hover:bg-blue-light text-white hover:text-blue p-[5px_10px] cursor-pointer first:rounded-[10px_10px_0_0] last:rounded-[0_0_10px_10px]">
                         {button}
                     </a>
                 );

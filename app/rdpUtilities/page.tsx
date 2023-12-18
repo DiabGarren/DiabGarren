@@ -1,5 +1,6 @@
 "use client";
 
+import Header from "@/components/rdpUtilites/header";
 import { useEffect, useState } from "react";
 
 export default function Login() {
@@ -44,24 +45,22 @@ export default function Login() {
 
     return (
         <>
-            <header>
-                <h1>Login</h1>
-            </header>
-            <main className="w-[350px] mx-auto">
+            <Header title={"Login"} />
+            <main className="w-[350px] mx-auto mt-[25px]">
                 <h3 className="text-warning">{error}</h3>
                 <h3>Username/Email</h3>
                 <input
-                    onChange={(event) => setUsername(event.target.value)}
+                    onChange={(event) => setUsername(event.target.value.toLocaleLowerCase())}
                     type="text"
                 />
-                <h3>Password</h3>
+                <h3 className="mt-[10px]">Password</h3>
                 <input
                     onChange={(event) => setPassword(event.target.value)}
                     type="password"
                 />
                 <a>Forgot password?</a>
                 <button
-                    className="w-[100%] bg-green border-green hover:text-green"
+                    className="w-[100%] bg-green hover:bg-green-light text-white hover:text-green border-green py-[5px] rounded mt-[10px]"
                     onClick={logIn}>
                     Login
                 </button>

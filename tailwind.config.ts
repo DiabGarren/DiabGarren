@@ -5,6 +5,7 @@ const config: Config = {
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/rdpUtilities/**/*.{js,ts,jsx,tsx,md}'
   ],
   theme: {
     extend: {
@@ -22,9 +23,10 @@ const config: Config = {
         },
         green: {
           DEFAULT: '#028202',
+          light: '#4be94b'
         },
         blue: {
-          dark: '#00799F',
+          DEFAULT: '#00799F',
           light: '#BFDEE8'
         }
       },
