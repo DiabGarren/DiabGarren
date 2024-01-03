@@ -34,6 +34,9 @@ const config: Config = {
         DEFAULT: '5px',
         'md': '10px',
         'lr': '15px',
+      },
+      animation: {
+        'spin-slow': 'spin 2s linear infinite'
       }
     },
   },

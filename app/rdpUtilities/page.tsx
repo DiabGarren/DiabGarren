@@ -1,12 +1,14 @@
 "use client";
 
 import Header from "@/components/rdpUtilites/header";
+import Spinner from "@/components/rdpUtilites/spinner";
 import { useEffect, useState } from "react";
 
 export default function Login() {
     const [error, setError] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [connected, setConnected] = useState(false);
 
     const logIn = async () => {
         let email = "";
@@ -41,30 +43,35 @@ export default function Login() {
                 });
         };
         getUser();
+        setConnected(true);
     }, []);
+
+    const page = (
+        <>
+            <h3 className="text-warning">{error}</h3>
+            <h3>Username/Email</h3>
+            <input
+                onChange={(event) => setUsername(event.target.value.toLocaleLowerCase())}
+                type="text"
+            />
+            <h3 className="mt-[10px]">Password</h3>
+            <input
+                onChange={(event) => setPassword(event.target.value)}
+                type="password"
+            />
+            <a>Forgot password?</a>
+            <button
+                className="w-[100%] bg-green hover:bg-green-light text-white hover:text-green border-green py-[5px] rounded mt-[10px]"
+                onClick={logIn}>
+                Login
+            </button>{" "}
+        </>
+    );
 
     return (
         <>
             <Header title={"Login"} />
-            <main className="w-[350px] mx-auto mt-[25px]">
-                <h3 className="text-warning">{error}</h3>
-                <h3>Username/Email</h3>
-                <input
-                    onChange={(event) => setUsername(event.target.value.toLocaleLowerCase())}
-                    type="text"
-                />
-                <h3 className="mt-[10px]">Password</h3>
-                <input
-                    onChange={(event) => setPassword(event.target.value)}
-                    type="password"
-                />
-                <a>Forgot password?</a>
-                <button
-                    className="w-[100%] bg-green hover:bg-green-light text-white hover:text-green border-green py-[5px] rounded mt-[10px]"
-                    onClick={logIn}>
-                    Login
-                </button>
-            </main>
+            <main className="w-[350px] mx-auto mt-[25px]">{connected ? page : <Spinner />}</main>
         </>
     );
 }

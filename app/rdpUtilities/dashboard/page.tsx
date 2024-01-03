@@ -1,9 +1,9 @@
+/* eslint-disable react/jsx-key */
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import Header from "@/components/rdpUtilites/header";
-import NavMenu from "@/components/rdpUtilites/navMenu";
+import Spinner from "@/components/rdpUtilites/spinner";
 import { useEffect, useState } from "react";
-import Popup from "reactjs-popup";
 
 export default function Dashboard() {
     const [user, setUser] = useState({
@@ -12,8 +12,10 @@ export default function Dashboard() {
         lastName: "",
         email: "",
         password: "",
-        level: "1",
+        level: 1,
     });
+    const [connected, setConnected] = useState(false);
+
     useEffect(() => {
         const getUser = async () => {
             fetch(process.env.NEXT_PUBLIC_API_URL + "/rdpUtilities/user")
@@ -26,7 +28,43 @@ export default function Dashboard() {
                 });
         };
         getUser();
+        setConnected(true);
     }, []);
+
+    const buttons = [];
+    if (user.level) {
+        if (user.level >= 2) {
+            buttons.push({ name: "Ward Council", value: "wardCouncil" });
+            if (user.level >= 3) {
+                buttons.push({ name: "Youth", value: "youth" });
+                if (user.level >= 4) {
+                    buttons.push(
+                        { name: "Bishopric", value: "bishopric" },
+                        { name: "Sacrament", value: "sacrament" }
+                    );
+                }
+            }
+        }
+        buttons.sort((a, b) => {
+            if (a.name > b.name) return 1;
+            else return -1;
+        });
+    }
+    const page = (
+        <>
+            <div className="w-[350px]">
+                {buttons.map((button: any) => {
+                    return (
+                        <a
+                            href={`/rdpUtilities/${button.value}`}
+                            className="button my-[10px] text-[1.2rem] text-left">
+                            {button.name}
+                        </a>
+                    );
+                })}
+            </div>
+        </>
+    );
 
     return (
         <>
@@ -34,7 +72,7 @@ export default function Dashboard() {
                 title={"Dashboard"}
                 user={user}
             />
-            <main></main>
+            <main className="w-[770px] mx-auto mt-[25px]">{connected ? page : <Spinner />}</main>
         </>
     );
 }

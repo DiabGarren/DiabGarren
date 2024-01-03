@@ -10,6 +10,10 @@ export async function GET() {
 
         const userId = cookies().get("rdpUtilities-user");
 
+        if (!userId || !userId.value) {
+            return createErrorResponse("No user found", 201);
+        }
+
         const user = await User.findOne({ _id: userId?.value });
 
         if (!user) {
