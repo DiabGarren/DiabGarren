@@ -14,6 +14,8 @@ export default function NavMenu(props: any) {
         buttons.sort();
     }
 
+    buttons.splice(0, 0, "Dashboard");
+
     return (
         <div className="flex flex-col w-[250px] text-[1.2rem]">
             {buttons.map((button: string) => {
