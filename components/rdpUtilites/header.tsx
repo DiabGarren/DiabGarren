@@ -7,7 +7,7 @@ import NavMenu from "./navMenu";
 export default function Header(props: any) {
     const [nav, setNav] = useState(false);
     return (
-        <header className="grid grid-cols-[90px_1fr_90px] bg-gradient-to-r from-blue to-blue-light h-[65px] items-center">
+        <header className="grid grid-cols-[70px_1fr_80px] bg-gradient-to-r from-blue to-blue-light h-[80px] items-center">
             {props.user ? (
                 <Popup
                     trigger={
@@ -16,7 +16,7 @@ export default function Header(props: any) {
                                 nav
                                     ? "bg-[url('/rdpUtilities/cross.svg')]"
                                     : "bg-[url('/rdpUtilities/hamburger.svg')]"
-                            } bg-[length:80%_70%] bg-no-repeat bg-center h-[calc(100%-10px)] w-[60px] rounded-[10px] mx-auto
+                            } bg-[length:35px] bg-no-repeat bg-center h-[55px] aspect-[1/1] rounded-[10px] p-[10px] mx-auto
                             ${
                                 nav
                                     ? "hover:bg-[url('/rdpUtilities/cross-hover.svg')]"
@@ -35,12 +35,12 @@ export default function Header(props: any) {
             ) : (
                 <></>
             )}
-            <h1 className="text-[2.5rem] font-[700] text-white col-[2]">{props.title}</h1>
+            <h1 className="text-[50px] font-[700] text-white col-[2]">{props.title}</h1>
             {props.user ? (
                 <a
-                    className="flex bg-primary h-[calc(100%-10px)] aspect-[1/1] rounded-[50%] p-[5px] mx-auto text-white border-2 border-primary justify-self-end items-center justify-center cursor-pointer
+                    className="flex bg-primary h-[65px] aspect-[1/1] rounded-[50%] p-[5px] mx-auto text-white border-2 border-primary justify-self-end items-center justify-center cursor-pointer
                 hover:text-primary hover:bg-transparent">
-                    <p className="text-[1.5rem]">
+                    <p className="text-[33px] h-[47px]">
                         {props.user.firstName[0]}
                         {props.user.lastName[0]}
                     </p>

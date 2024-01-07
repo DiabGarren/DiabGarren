@@ -37,6 +37,14 @@ const config: Config = {
       },
       animation: {
         'spin-slow': 'spin 2s linear infinite'
+      },
+      screens: {
+        'xsm': '375px',
+        'sm': '425px',
+        'md': '768px',
+        'lr': '1024px',
+        'xl': '1440px',
+        '2xl': '2560px'
       }
     },
   },

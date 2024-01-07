@@ -53,6 +53,7 @@ export default function Dashboard() {
     const page = (
         <>
             <div className="w-[350px]">
+                <h2>Resources</h2>
                 {buttons.map((button: any) => {
                     return (
                         <a
