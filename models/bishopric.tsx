@@ -5,7 +5,7 @@ const bishopricSchema = new Schema({
     openingPrayer: String,
     spiritualThought: String,
     training: String,
-    agenda: Array<string>,
+    agenda: [String],
     closingPrayer: String,
     notes: String,
     createdBy: { name: String, date: String },
