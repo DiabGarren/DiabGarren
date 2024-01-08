@@ -30,7 +30,10 @@ export default function Header(props: any) {
                     onClose={() => {
                         setNav(false);
                     }}>
-                    <NavMenu {...props.user} />
+                    <NavMenu
+                        {...props.user}
+                        active={props.title}
+                    />
                 </Popup>
             ) : (
                 <></>

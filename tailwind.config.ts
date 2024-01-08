@@ -28,6 +28,10 @@ const config: Config = {
         blue: {
           DEFAULT: '#00799F',
           light: '#BFDEE8'
+        },
+        grey: {
+          DEFAULT: '#707070',
+          light: '#cccccc'
         }
       },
       borderRadius: {
