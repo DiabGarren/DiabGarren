@@ -82,9 +82,9 @@ export default function Bishopric() {
                             currDate.getDate() === date.getDate() &&
                             currDate.getMonth() === date.getMonth() &&
                             currDate.getFullYear() === date.getFullYear()
-                                ? "bg-green hover:text-green"
+                                ? "bg-green border-green hover:text-green"
                                 : currDate < date
-                                ? "bg-blue hover:text-blue"
+                                ? "bg-blue border-blue hover:text-blue"
                                 : ""
                         }`}>
                         {dateStr}
@@ -97,10 +97,10 @@ export default function Bishopric() {
                             currDate.getDate() === date.getDate() &&
                             currDate.getMonth() === date.getMonth() &&
                             currDate.getFullYear() === date.getFullYear()
-                                ? "bg-green hover:text-green"
+                                ? "bg-green border-green hover:text-green"
                                 : currDate > date
-                                ? "bg-grey hover:text-grey"
-                                : "bg-blue hover:text-blue"
+                                ? "bg-grey border-grey hover:text-grey"
+                                : "bg-blue border-blue hover:text-blue"
                         }`}>
                         {dateStr}
                     </a>

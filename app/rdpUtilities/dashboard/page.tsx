@@ -58,7 +58,7 @@ export default function Dashboard() {
                     return (
                         <a
                             href={`/rdpUtilities/${button.value}`}
-                            className="button my-[10px] text-[1.2rem] text-left">
+                            className="button bg-blue hover:text-blue border-blue my-[10px] text-[1.2rem] text-left">
                             {button.name}
                         </a>
                     );
