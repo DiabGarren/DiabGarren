@@ -1,6 +1,6 @@
 "use client";
 import Header from "@/components/3DPrinting/header";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function SignUp() {
     const [firstName, setFirstName] = useState("");
@@ -12,6 +12,19 @@ export default function SignUp() {
     const [password, setPassword] = useState("");
     const [confirm, setConfirm] = useState("");
     const [error, setError] = useState("");
+
+    useEffect(() => {
+        const getUser = async () => {
+            fetch(process.env.NEXT_PUBLIC_API_URL + "/3DPrinting/user")
+                .then((res) => res.json())
+                .then((data) => {
+                    if (data.status === "success") {
+                        window.location.href = "/3DPrinting/";
+                    }
+                });
+        };
+        getUser();
+    }, []);
 
     const signUp = async (event: any) => {
         event.preventDefault();

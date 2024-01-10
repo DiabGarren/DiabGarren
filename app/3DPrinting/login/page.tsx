@@ -1,6 +1,6 @@
 "use client";
 import Header from "@/components/3DPrinting/header";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Login() {
     const [username, setUsername] = useState("");
@@ -8,13 +8,21 @@ export default function Login() {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
 
+    useEffect(() => {
+        const getUser = async () => {
+            fetch(process.env.NEXT_PUBLIC_API_URL + "/3DPrinting/user")
+                .then((res) => res.json())
+                .then((data) => {
+                    if (data.status === "success") {
+                        window.location.href = "/3DPrinting/";
+                    }
+                });
+        };
+        getUser();
+    }, []);
+
     const login = async (event: any) => {
         event.preventDefault();
-
-        if (username.includes("@")) {
-            setEmail(username);
-            setUsername("");
-        }
 
         const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/3DPrinting/login", {
             method: "POST",
@@ -46,7 +54,10 @@ export default function Login() {
                         name="usernameEmail"
                         className="form-input"
                         placeholder="Username/Email"
-                        onChange={(event) => setUsername(event.target.value.toLowerCase())}
+                        onChange={(event) => {
+                            setUsername(event.target.value.toLowerCase());
+                            setEmail(event.target.value.toLowerCase());
+                        }}
                         required
                     />
                     <label>Password</label>
