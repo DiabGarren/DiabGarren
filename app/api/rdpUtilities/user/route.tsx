@@ -1,6 +1,6 @@
-import connectDb from "@/lib/connectDb";
+import connectDb from "@/lib/rdpUtilities/connectDb";
 import { createErrorResponse } from "@/lib/utils";
-import User from "@/models/user";
+import User from "@/models/rdpUtilities/user";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 

@@ -1,6 +1,6 @@
-import connectDb from "@/lib/connectDb";
+import connectDb from "@/lib/rdpUtilities/connectDb";
 import { createErrorResponse } from "@/lib/utils";
-import Bishopric from "@/models/bishopric";
+import Bishopric from "@/models/rdpUtilities/bishopric";
 import { NextResponse } from "next/server";
 
 export async function GET() {
