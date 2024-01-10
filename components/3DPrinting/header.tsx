@@ -67,7 +67,7 @@ export default function Header(props: any) {
 
     return (
         <header
-            style={{ gridTemplateColumns: `70px 1fr ${props.user ? "160px" : "70px"}` }}
+            style={{ gridTemplateColumns: `${props.user ? "160px 1fr 160px" : "70px 1fr 70px"}` }}
             className={`grid h-[80px] items-center bg-gradient-to-r from-print-red to-print-blue`}>
             <a
                 href="/3DPrinting"
