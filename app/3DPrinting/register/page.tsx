@@ -1,10 +1,40 @@
 "use client";
 import Header from "@/components/3DPrinting/header";
+import { useState } from "react";
 
 export default function SignUp() {
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [phone, setPhone] = useState("");
+    const [prefer, setPrefer] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirm, setConfirm] = useState("");
+    const [error, setError] = useState("");
+
     const signUp = async (event: any) => {
-        event.preventDefautl();
+        event.preventDefault();
+        const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/3DPrinting/user", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                firstName: firstName,
+                lastName: lastName,
+                username: username,
+                email: email,
+                phone: phone,
+                prefer: prefer,
+                password: password,
+                confirm: confirm,
+            }),
+        });
+        const data = await res.json();
+
+        if (data.status === "fail" || data.status === "error") setError(data.message);
+        else window.location.href = "/3DPrinting";
     };
+
     return (
         <>
             <Header title="Sign Up" />
@@ -12,7 +42,7 @@ export default function SignUp() {
                 <form
                     onSubmit={signUp}
                     className="mt-[50px] shadow-2xl rounded-lr p-[20px]">
-                    <p className="text-print-red text-[1.1rem]"></p>
+                    <p className="text-print-red text-[1.1rem]">{error}</p>
                     <div className="mb-[15px]">
                         <label>First Name</label>
                         <input
@@ -20,6 +50,7 @@ export default function SignUp() {
                             name="firstName"
                             className="form-input"
                             placeholder="First Name"
+                            onChange={(event) => setFirstName(event.target.value)}
                             required
                         />
                         <label>Last Name</label>
@@ -28,6 +59,7 @@ export default function SignUp() {
                             name="lastName"
                             className="form-input"
                             placeholder="Last Name"
+                            onChange={(event) => setLastName(event.target.value)}
                             required
                         />
                     </div>
@@ -38,6 +70,7 @@ export default function SignUp() {
                             name="username"
                             className="form-input"
                             placeholder="Username"
+                            onChange={(event) => setUsername(event.target.value)}
                             required
                         />
                         <label>Email</label>
@@ -46,6 +79,7 @@ export default function SignUp() {
                             name="email"
                             className="form-input"
                             placeholder="Email"
+                            onChange={(event) => setEmail(event.target.value)}
                             required
                         />
                         <label>Cell number</label>
@@ -54,6 +88,7 @@ export default function SignUp() {
                             name="phone"
                             className="form-input"
                             placeholder="(000) 123 4567"
+                            onChange={(event) => setPhone(event.target.value)}
                         />
                         <div>
                             <label>Prefered contact method</label>
@@ -64,6 +99,7 @@ export default function SignUp() {
                                         type="radio"
                                         name="prefer"
                                         className="form-radio"
+                                        onChange={() => setPrefer("Text")}
                                         id=""
                                     />
                                 </div>
@@ -73,6 +109,7 @@ export default function SignUp() {
                                         type="radio"
                                         name="prefer"
                                         className="form-radio"
+                                        onChange={() => setPrefer("WhatsApp")}
                                         id=""
                                     />
                                 </div>
@@ -82,6 +119,7 @@ export default function SignUp() {
                                         type="radio"
                                         name="prefer"
                                         className="form-radio"
+                                        onChange={() => setPrefer("Email")}
                                         id=""
                                     />
                                 </div>
@@ -95,6 +133,7 @@ export default function SignUp() {
                         name="password"
                         className="form-input"
                         placeholder="Password"
+                        onChange={(event) => setPassword(event.target.value)}
                         required
                     />
                     <label>Confirm Password</label>
@@ -103,6 +142,7 @@ export default function SignUp() {
                         name="password"
                         className="form-input"
                         placeholder="Confirm Password"
+                        onChange={(event) => setConfirm(event.target.value)}
                         required
                     />
                     <button

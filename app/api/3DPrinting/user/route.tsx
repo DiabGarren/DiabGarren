@@ -37,6 +37,10 @@ export async function POST(request: Request) {
         await connectDb();
         const body = await request.json();
 
+        if (body.password !== body.confirm) {
+            return createErrorResponse("Password does not match", 201);
+        }
+
         const password = await hash(body.password, 10);
 
         const user = await User.create({
