@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss';
+const plugin = require('tailwindcss/plugin');
 
 const config: Config = {
   content: [
@@ -32,7 +33,22 @@ const config: Config = {
         grey: {
           DEFAULT: '#707070',
           light: '#cccccc'
+        },
+        print: {
+          red: {
+            DEFAULT: '#d81a00'
+          },
+          blue: {
+            DEFAULT: '#0156f6',
+            light: '#4683f6',
+            dark: '#18069e',
+          },
+          grey: {
+            light: '#f2f2f2'
+          }
         }
+
+
       },
       borderRadius: {
         DEFAULT: '5px',
@@ -52,6 +68,48 @@ const config: Config = {
       }
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function ({ addComponents, theme }: { addComponents: any, theme: any; }) {
+      addComponents({
+        '.form-input': {
+          backgroundColor: theme('colors.print.grey.light'),
+          borderRadius: theme('borderRadius.DEFAULT'),
+          padding: '2px 5px',
+          marginBottom: '5px',
+          width: '100%',
+          borderBottomWidth: '2px',
+          borderColor: theme('colors.grey.DEFAULT'),
+        },
+        '.form-button': {
+          backgroundColor: theme('colors.print.blue.DEFAULT'),
+          borderRadius: theme('borderRadius.DEFAULT'),
+          color: 'white',
+          fontSize: '1.2rem',
+          width: '100%',
+          marginTop: '25px',
+          paddingBlock: '5px'
+
+        },
+        '.form-button:hover': {
+          backgroundColor: theme('colors.print.blue.light'),
+        },
+        '.form-radio': {
+          appearance: 'none',
+          width: '15px',
+          height: '15px',
+          borderWidth: '1px',
+          borderColor: theme('colors.grey.DEFAULT'),
+          borderRadius: '3px',
+          backgroundColor: 'white',
+          marginInline: '7px',
+        },
+        '.form-radio:checked': {
+          backgroundColor: theme('colors.print.blue.DEFAULT')
+        }
+      }
+      );
+    }
+    )
+  ],
 };
 export default config;

@@ -51,7 +51,7 @@ export default function Login() {
             <h3 className="text-warning">{error}</h3>
             <h3>Username/Email</h3>
             <input
-                onChange={(event) => setUsername(event.target.value.toLocaleLowerCase())}
+                onChange={(event) => setUsername(event.target.value.toLowerCase())}
                 type="text"
             />
             <h3 className="mt-[10px]">Password</h3>
