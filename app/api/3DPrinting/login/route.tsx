@@ -12,8 +12,9 @@ export async function POST(request: Request) {
 
         let user = null;
 
-        if (body.email !== "") user = await User.findOne({ email: body.email });
-        else if (body.username !== "") user = await User.findOne({ username: body.username });
+        if (body.email.includes("@")) user = await User.findOne({ email: body.email });
+        else if (!body.username.includes("@"))
+            user = await User.findOne({ username: body.username });
         else return createErrorResponse("Username/Email does not exist", 500);
 
         if (body.password === "") return createErrorResponse("Please enter a password", 500);
