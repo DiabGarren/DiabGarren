@@ -4,6 +4,7 @@ import User from "@/models/3DPrinting/user";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 import { hash } from "bcrypt";
+import { createTransport } from "nodemailer";
 
 export async function GET() {
     try {
@@ -41,6 +42,22 @@ export async function POST(request: Request) {
             return createErrorResponse("Password does not match", 201);
         }
 
+        const users = await User.find({});
+        let existing = "";
+
+        users.forEach((user) => {
+            if (user.username === body.username) {
+                existing = "Username already exists";
+                return createErrorResponse("Username already exists", 201);
+            }
+            if (user.email === body.email) {
+                existing = "Email already exists";
+                return createErrorResponse("Email already exists", 201);
+            }
+        });
+
+        if (existing) return createErrorResponse(existing, 201);
+
         const password = await hash(body.password, 10);
 
         const user = await User.create({
@@ -55,6 +72,53 @@ export async function POST(request: Request) {
         });
 
         let resopnse = { status: "success", data: user };
+
+        cookies().set("3DPrinting-user", user._id);
+
+        const transport = createTransport({
+            service: "gmail",
+            auth: {
+                user: process.env.GMAIL,
+                pass: process.env.GMAIL_PASS,
+            },
+        });
+
+        const mailOptions = {
+            from: process.env.GMAIL,
+            to: user.email,
+            subject: "Welcome to Diab Design's 3D Printing!",
+            html: `<h2>Dear ${user.firstName} ${user.lastName}</h2><p>Thank you for creating an account.<br>Contact <a href="mailto:garrendiab@gmail.com">@Garren Diab</a> if you have any queries or concerns.</p>`,
+        };
+
+        transport.sendMail(mailOptions, (err, info) => {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log(`Email sent: ${info.response}`);
+                const transport = createTransport({
+                    service: "gmail",
+                    auth: {
+                        user: process.env.GMAIL,
+                        pass: process.env.GMAIL_PASS,
+                    },
+                });
+
+                const mailOptions = {
+                    from: process.env.GMAIL,
+                    to: process.env.GMAIL,
+                    subject: "New 3D Printing user",
+                    html: `<h2>${user.firstName} ${user.lastName} has just created an account.</h2>`,
+                };
+
+                transport.sendMail(mailOptions, (error: any, info: any) => {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        console.log(`Email sent: ${info.response}`);
+                    }
+                });
+            }
+        });
 
         return new NextResponse(JSON.stringify(resopnse), {
             status: 201,
