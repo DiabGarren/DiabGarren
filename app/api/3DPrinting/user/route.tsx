@@ -5,7 +5,6 @@ import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 import { hash } from "bcrypt";
 import sgMail from "@sendgrid/mail";
-import { Resend } from "resend";
 
 export async function GET() {
     try {
