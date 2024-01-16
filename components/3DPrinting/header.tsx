@@ -4,7 +4,7 @@ export default function Header(props: any) {
     let profile = (
         <a
             href="/3DPrinting/login"
-            className="flex items-center justify-center w-[60px] h-[60px] rounded-[50%] border-2 p-[5px] hover:bg-print-blue-light cursor-pointer justify-self-end mr-[10px]">
+            className="flex items-center justify-center w-[40px] md:w-[60px] h-[40px] md:h-[60px] rounded-[50%] border-2 p-[5px] hover:bg-print-blue-light cursor-pointer justify-self-end mr-[10px]">
             <svg
                 className="w-[93%] h-[100%]"
                 xmlns="http://www.w3.org/2000/svg"
@@ -22,11 +22,12 @@ export default function Header(props: any) {
     );
     if (props.user) {
         profile = (
-            <div className="grid grid-cols-2 items-center">
+            <div className="flex justify-end items-center">
                 <a
                     href="3DPrinting/cart"
-                    className="cursor-pointer relative [&_p]:hover:bg-print-blue-light">
+                    className="cursor-pointer relative [&_p]:hover:bg-print-blue-light w-[50px] md:w-[60px] h-[50px] md:h-[60px] mr-[10px]">
                     <svg
+                        className="w-[93%] h-[100%]"
                         xmlns="http://www.w3.org/2000/svg"
                         width="69"
                         height="54"
@@ -40,13 +41,13 @@ export default function Header(props: any) {
                             stroke-linejoin="round"
                         />
                     </svg>
-                    <p className="absolute top-0 right-0 flex border-[2px] rounded-[50%] w-[25px] h-[25px] justify-center items-center text-white bg-print-blue">
+                    <p className="absolute top-0 right-0 flex border-[2px] rounded-[50%] w-[20px] md:w-[25px] h-[20px] md:h-[25px] justify-center items-center text-white bg-print-blue">
                         {props.user.cart.length}
                     </p>
                 </a>
                 <a
                     href="/3DPrinting/profile"
-                    className="flex items-center justify-center w-[60px] h-[60px] rounded-[50%] border-2 p-[5px] hover:bg-print-blue-light cursor-pointer justify-self-end mr-[10px]">
+                    className="flex items-center justify-center w-[40px] md:w-[60px] h-[40px] md:h-[60px] rounded-[50%] border-2 p-[5px] hover:bg-print-blue-light cursor-pointer justify-self-end mr-[10px]">
                     <svg
                         className="w-[93%] h-[100%]"
                         xmlns="http://www.w3.org/2000/svg"
@@ -67,21 +68,24 @@ export default function Header(props: any) {
 
     return (
         <header
-            style={{ gridTemplateColumns: `${props.user ? "160px 1fr 160px" : "70px 1fr 70px"}` }}
-            className={`grid h-[80px] items-center bg-gradient-to-r from-print-red to-print-blue`}>
+            className={`grid ${
+                props.user
+                    ? "grid-cols-[50px_1fr_110px] md:grid-cols-[160px_1fr_160px]"
+                    : "grid-cols-[50px_1fr_50px] md:grid-cols-[70px_1fr_70px]"
+            } h-[60px] md:h-[80px] items-center bg-gradient-to-r from-print-red to-print-blue`}>
             <a
                 href="/3DPrinting"
                 className="block">
                 <Image
-                    className="mx-[20px]"
+                    className="ml-[5px] md:ml-[10px] w-[55px] md:w-[60px]"
                     src="/3DPrinting/LogoGlow.png"
                     alt="3D Printing Logo"
                     width={60}
                     height={60}
                 />
             </a>
-            <h1 className="text-white text-[30px] font-[700] text-center">
-                {props.title || "Custom 3D Printing"}
+            <h1 className="text-white text-[25px] md:text-[30px] font-[700] text-center">
+                {props.title || "3D Printing"}
             </h1>
             {profile}
         </header>

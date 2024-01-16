@@ -56,18 +56,24 @@ export default function ItemPage({ params }: { params: { id: string } }) {
     return (
         <>
             <Header user={user} />
-            <main className="mt-[50px] mx-auto w-[450px]">
-                <div className="border-[3px] border-print-blue-light rounded-lr w-[450px]">
-                    <ImageFallback
-                        name={item?.name}
-                        src={item?.images[0]}
-                        width={450}
-                    />
+            <main className="mt-[50px] mx-auto w-[90%] md:w-[85%] xl:w-[900px] md:grid md:grid-cols-2">
+                <div className="md:w-[90%] ">
+                    <div className="border-[3px] border-print-blue-light rounded-lr aspect-[1/1]">
+                        <ImageFallback
+                            name={item?.name}
+                            src={item?.images[0]}
+                            width={450}
+                        />
+                    </div>
+                    <p className="mt-[10px] hidden md:block">
+                        All sizes are in the format: <br /> <b>Length x Width x Height</b>
+                    </p>
                 </div>
+
                 <div>
-                    <h1 className="text-[30px] font-[700]">{item?.name}</h1>
+                    <h1 className="text-[25px] xsm:text-[30px] font-[700]">{item?.name}</h1>
                     <h2>Size (mm):</h2>
-                    <div className="flex gap-[10px]">
+                    <div className="flex flex-wrap gap-[10px]">
                         {item?.options.map((option, index) => {
                             return (
                                 <div className="bg-print-blue-light-1 w-fit p-[2px_5px] rounded [&:has(input:checked)]:bg-print-blue [&:has(input:checked)]:text-white cursor-pointer">
@@ -90,7 +96,7 @@ export default function ItemPage({ params }: { params: { id: string } }) {
                         })}
                     </div>
                     <h2>Price:</h2>
-                    <p>{choice ? `R${choice?.price}` : ""}</p>
+                    <p>{choice ? `R${choice?.price}` : <br />}</p>
                     <p>{choice && choice.other ? `Includes: ${choice.other}` : ""}</p>
                     <h2>Colour:</h2>
                     <div className="flex gap-[10px]">
@@ -115,12 +121,12 @@ export default function ItemPage({ params }: { params: { id: string } }) {
                         })}
                     </div>
                     <h2
-                        className={`text-print-${
-                            notify?.status === "success" ? "green" : "red"
+                        className={`${
+                            notify?.status === "success" ? "text-print-green" : "text-print-red"
                         } text-center mt-[30px]`}>
                         {notify?.message}
                     </h2>
-                    <div className="w-[300px] mx-auto">
+                    <div className="w-[300px] mx-auto md:mx-0">
                         <button
                             className="bg-print-blue hover:bg-print-blue-light text-white py-[10px] rounded w-[100%]"
                             onClick={addToCart}>
@@ -128,6 +134,9 @@ export default function ItemPage({ params }: { params: { id: string } }) {
                         </button>
                     </div>
                 </div>
+                <p className="mt-[30px] md:hidden">
+                    All sizes are in the format: <br /> <b>Length x Width x Height</b>
+                </p>
             </main>
         </>
     );

@@ -40,7 +40,7 @@ export default function Page() {
     return (
         <>
             <Header user={user} />
-            <main className="grid grid-cols-4 gap-[10px] mt-[50px] w-fit mx-auto">
+            <main className="grid grid-cols-1 md:grid-cols-auto-250 justify-center gap-[10px] mt-[50px] w-[90%] mx-auto">
                 {items?.map((item) => {
                     return <ItemCard {...item} />;
                 })}

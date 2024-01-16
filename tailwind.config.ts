@@ -60,6 +60,9 @@ const config: Config = {
         'md': '10px',
         'lr': '15px',
       },
+      gridTemplateColumns: {
+        'auto-250': 'repeat(auto-fit, 250px)'
+      },
       animation: {
         'spin-slow': 'spin 2s linear infinite'
       },
