@@ -13,7 +13,9 @@ export default function ItemCard(props: any) {
             </a>
             <div className="p-[10px] border-t-2 bg-print-blue-light-1">
                 <h2 className="text-[1.2rem]">{props.name}</h2>
-                <p>From R{props.options[0].price}</p>
+                <p>
+                    {props.options.length > 1 ? "From" : ""} R{props.options[0].price}
+                </p>
             </div>
             <a
                 href={`/3DPrinting/item/${props._id}`}
