@@ -69,6 +69,7 @@ export async function POST(request: Request) {
             prefer: body.prefer,
             password: password,
             level: 1,
+            cart: [],
         });
 
         let resopnse = { status: "success", data: user };
@@ -96,40 +97,6 @@ export async function POST(request: Request) {
         } catch (error) {
             console.log(error);
         }
-
-        // const resend = new Resend(process.env.RESEND_API);
-
-        // resend.emails.send({
-        //     from: `${process.env.GMAIL}`,
-        //     to: user.email,
-        //     subject: "Welcome to Diab Design's 3D Printing!",
-        //     html: `<h2>Dear ${user.firstName} ${user.lastName}</h2><p>Thank you for creating an account.<br>Contact <a href="mailto:garrendiab@gmail.com">@Garren Diab</a> if you have any queries or concerns.</p>`,
-        // });
-
-        // const client = new SMTPClient({
-        //     user: process.env.GMAIL,
-        //     password: process.env.GMAIL_PASS,
-        //     host: "smtp.gmail.com",
-        //     ssl: true,
-        // });
-
-        // client.send(
-        //     {
-        //         text: `Dear ${user.firstName} ${user.lastName}. Thank you for creating an account.Contact ${process.env.GMAIL} if you have any queries or concerns.`,
-        //         from: `${process.env.GMAIL}`,
-        //         to: user.email,
-        //         subject: "Welcome to Diab Design's 3D Printing!",
-        //         attachments: [
-        //             {
-        //                 data: `<html><h2>Dear ${user.firstName} ${user.lastName}</h2><p>Thank you for creating an account.<br>Contact <a href="mailto:garrendiab@gmail.com">@Garren Diab</a> if you have any queries or concerns.</p></html>`,
-        //                 alternativs: true,
-        //             },
-        //         ],
-        //     },
-        //     function (err, message) {
-        //         console.log(err || message);
-        //     }
-        // );
 
         return new NextResponse(JSON.stringify(resopnse), {
             status: 201,

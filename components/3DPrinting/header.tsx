@@ -41,7 +41,7 @@ export default function Header(props: any) {
                         />
                     </svg>
                     <p className="absolute top-0 right-0 flex border-[2px] rounded-[50%] w-[25px] h-[25px] justify-center items-center text-white bg-print-blue">
-                        0
+                        {props.user.cart.length}
                     </p>
                 </a>
                 <a

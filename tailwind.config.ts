@@ -40,12 +40,17 @@ const config: Config = {
           },
           blue: {
             DEFAULT: '#0156f6',
-            light: '#4683f6',
+            light: { DEFAULT: '#4683f6', 1: '#e7e7ff' },
             dark: '#18069e',
           },
           grey: {
-            light: '#f2f2f2'
-          }
+            light: '#f2f2f2',
+            imgBg: '#1c1c1c',
+          },
+          green: {
+            DEFAULT: '#028202',
+            light: '#4be94b'
+          },
         }
 
 

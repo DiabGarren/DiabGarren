@@ -9,6 +9,9 @@ const userSchema = new Schema({
     prefer: String,
     password: String,
     level: Number,
+    cart: [
+        { _id: String, name: String, size: String, price: Number, colour: String, image: String },
+    ],
 });
 
 const User = models.User || model("User", userSchema);
