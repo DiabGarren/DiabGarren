@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 export default function ItemPage({ params }: { params: { id: string } }) {
     const [user, setUser] = useState();
     const [item, setItem] = useState<Item>();
-    const [choice, setChoice] = useState<{ size: string; price: number }>();
+    const [choice, setChoice] = useState<{ size: string; price: number; other: string }>();
     const [colour, setColour] = useState<string>();
     const [notify, setNotify] = useState<{ status: string; message: string }>();
 
@@ -68,22 +68,22 @@ export default function ItemPage({ params }: { params: { id: string } }) {
                     <h1 className="text-[30px] font-[700]">{item?.name}</h1>
                     <h2>Size (mm):</h2>
                     <div className="flex gap-[10px]">
-                        {item?.options.map((option) => {
+                        {item?.options.map((option, index) => {
                             return (
                                 <div className="bg-print-blue-light-1 w-fit p-[2px_5px] rounded [&:has(input:checked)]:bg-print-blue [&:has(input:checked)]:text-white cursor-pointer">
                                     <input
                                         className="appearance-none"
                                         type="radio"
                                         name="size"
-                                        id={option.size}
+                                        id={`${option.size}-${index}`}
                                         onClick={() => {
                                             setChoice(option);
                                         }}
                                     />
                                     <label
-                                        htmlFor={option.size}
+                                        htmlFor={`${option.size}-${index}`}
                                         className="cursor-pointer">
-                                        {option.size}
+                                        {`${option.size}${option.other ? "*" : ""}`}
                                     </label>
                                 </div>
                             );
@@ -91,6 +91,7 @@ export default function ItemPage({ params }: { params: { id: string } }) {
                     </div>
                     <h2>Price:</h2>
                     <p>{choice ? `R${choice?.price}` : ""}</p>
+                    <p>{choice && choice.other ? `Includes: ${choice.other}` : ""}</p>
                     <h2>Colour:</h2>
                     <div className="flex gap-[10px]">
                         {item?.colours.map((colour) => {
