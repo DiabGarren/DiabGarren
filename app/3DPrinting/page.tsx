@@ -24,7 +24,12 @@ export default function Page() {
                 .then((res) => res.json())
                 .then((data) => {
                     if (data.status === "success") {
-                        setItems(data.data);
+                        setItems(
+                            data.data.sort((a: Item, b: Item) => {
+                                if (a.name.localeCompare(b.name) === 1) return 1;
+                                else return -1;
+                            })
+                        );
                     }
                 });
         };
