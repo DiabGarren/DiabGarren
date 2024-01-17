@@ -43,7 +43,7 @@ export default function Login() {
     return (
         <>
             <Header title="Login" />
-            <main className="w-[400px] mx-auto">
+            <main className="md:w-[400px] mx-auto">
                 <form
                     onSubmit={login}
                     className="mt-[50px] shadow-2xl rounded-lr p-[20px]">

@@ -51,7 +51,7 @@ export default function SignUp() {
     return (
         <>
             <Header title="Sign Up" />
-            <main className="w-[400px] mx-auto">
+            <main className="md:w-[400px] mx-auto">
                 <form
                     onSubmit={signUp}
                     className="mt-[50px] shadow-2xl rounded-lr p-[20px]">
