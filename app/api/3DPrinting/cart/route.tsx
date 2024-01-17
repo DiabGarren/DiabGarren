@@ -49,16 +49,28 @@ export async function POST(request: Request) {
         }
 
         const curr = await User.findOne({ _id: id?.value });
-
         const cart = JSON.parse(JSON.stringify(curr)).cart;
-        cart.push({
-            _id: body._id,
-            name: body.name,
-            size: body.size,
-            price: body.price,
-            colour: body.colour,
-            image: body.image,
-        });
+
+        const existing = cart.findIndex(
+            (item: any) =>
+                item.name === body.name && item.size === body.size && item.colour === body.colour
+        );
+
+        if (existing > -1) {
+            cart[existing].qty++;
+        } else {
+            cart.push({
+                _id: body._id,
+                name: body.name,
+                size: body.size,
+                price: body.price,
+                colour: body.colour,
+                image: body.image,
+                qty: 1,
+            });
+        }
+
+        // const cart = JSON.parse(JSON.stringify(curr)).cart;
 
         const user = await User.updateOne({ _id: id?.value }, { cart: cart });
 
