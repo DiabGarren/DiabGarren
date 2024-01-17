@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 
 export default function ItemPage({ params }: { params: { id: string } }) {
     const [user, setUser] = useState();
+    const [cart, setCart] = useState(0);
     const [item, setItem] = useState<Item>({
         _id: "",
         name: "",
@@ -30,6 +31,7 @@ export default function ItemPage({ params }: { params: { id: string } }) {
                 .then((data) => {
                     if (data.status === "success") {
                         setUser(data.data);
+                        setCart(data.data.cart.length);
                     }
                 });
         };
@@ -38,8 +40,8 @@ export default function ItemPage({ params }: { params: { id: string } }) {
                 .then((res) => res.json())
                 .then((data) => {
                     if (data.status === "success") {
-                        setItem(data.data[0]);
-                        setImg({ img: data.data[0].images[0], pos: 0 });
+                        setItem(data.data);
+                        setImg({ img: data.data.images[0], pos: 0 });
                     }
                 });
         };
@@ -62,12 +64,17 @@ export default function ItemPage({ params }: { params: { id: string } }) {
         });
 
         const data = await res.json();
+        if (data.message.includes("login")) window.location.href = "/3DPrinting/login";
         setNotify({ status: data.status, message: data.message });
+        if (data.status == "success") setCart(cart + 1);
     };
 
     return (
         <>
-            <Header user={user} />
+            <Header
+                cart={cart}
+                user={user}
+            />
             <main className="mt-[50px] mx-auto w-[90%] md:w-[85%] xl:w-[900px] md:grid md:grid-cols-[2fr_1fr]">
                 <div className="md:w-[90%]">
                     <div className="relative border-[3px] border-print-blue-light rounded-lr aspect-[3/2]">
