@@ -8,6 +8,14 @@ export interface User {
     password: string;
     level: number;
     cart: [
-        { _id: string; name: string; size: string; price: number; colour: string; image: string }
+        {
+            _id: string;
+            name: string;
+            size: string;
+            price: number;
+            colour: string;
+            image: string;
+            qty: number;
+        }
     ];
 }

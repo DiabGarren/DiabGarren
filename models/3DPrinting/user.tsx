@@ -10,7 +10,15 @@ const userSchema = new Schema({
     password: String,
     level: Number,
     cart: [
-        { _id: String, name: String, size: String, price: Number, colour: String, image: String },
+        {
+            _id: String,
+            name: String,
+            size: String,
+            price: Number,
+            colour: String,
+            image: String,
+            qty: Number,
+        },
     ],
 });
 
