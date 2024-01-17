@@ -24,7 +24,7 @@ export default function Header(props: any) {
         profile = (
             <div className="flex justify-end items-center">
                 <a
-                    href="3DPrinting/cart"
+                    href="/3DPrinting/cart"
                     className="cursor-pointer relative [&_p]:hover:bg-print-blue-light w-[50px] md:w-[60px] h-[50px] md:h-[60px] mr-[10px]">
                     <svg
                         className="w-[93%] h-[100%]"
@@ -42,7 +42,7 @@ export default function Header(props: any) {
                         />
                     </svg>
                     <p className="absolute top-0 right-0 flex border-[2px] rounded-[50%] w-[20px] md:w-[25px] h-[20px] md:h-[25px] justify-center items-center text-white bg-print-blue">
-                        {props.user.cart.length}
+                        {props.cart ? props.cart : props.user.cart.length}
                     </p>
                 </a>
                 <a
@@ -65,6 +65,8 @@ export default function Header(props: any) {
             </div>
         );
     }
+
+    // console.log(props.cart, props.user.cart.length);
 
     return (
         <header
