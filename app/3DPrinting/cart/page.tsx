@@ -36,8 +36,15 @@ export default function Cart() {
                 {user?.cart.map((item) => {
                     return <CartItem {...item} />;
                 })}
-                <h2>Total:</h2>
-                <p>R{getTotal()}</p>
+                <div className="text-right">
+                    <h2>Total:</h2>
+                    <p>R{getTotal()}</p>
+                </div>
+                <a
+                    href="/3DPrinting/checkout"
+                    className="block bg-print-blue hover:bg-print-blue-light text-white rounded w-[90%] md:w-[350px] h-[35px] py-[5px] mx-auto text-center cursor-pointer">
+                    Checkout
+                </a>
             </main>
         </>
     );
