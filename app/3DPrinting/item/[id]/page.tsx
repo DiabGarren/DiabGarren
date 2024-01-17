@@ -7,10 +7,21 @@ import { useEffect, useState } from "react";
 
 export default function ItemPage({ params }: { params: { id: string } }) {
     const [user, setUser] = useState();
-    const [item, setItem] = useState<Item>();
+    const [item, setItem] = useState<Item>({
+        _id: "",
+        name: "",
+        colours: [""],
+        options: [{ size: "", price: 0, other: "" }],
+        images: [""],
+    });
     const [choice, setChoice] = useState<{ size: string; price: number; other: string }>();
     const [colour, setColour] = useState<string>();
     const [notify, setNotify] = useState<{ status: string; message: string }>();
+
+    const [img, setImg] = useState<{ img: string | undefined; pos: number }>({
+        img: undefined,
+        pos: 0,
+    });
 
     useEffect(() => {
         const getUser = async () => {
@@ -28,6 +39,7 @@ export default function ItemPage({ params }: { params: { id: string } }) {
                 .then((data) => {
                     if (data.status === "success") {
                         setItem(data.data[0]);
+                        setImg({ img: data.data[0].images[0], pos: 0 });
                     }
                 });
         };
@@ -56,14 +68,30 @@ export default function ItemPage({ params }: { params: { id: string } }) {
     return (
         <>
             <Header user={user} />
-            <main className="mt-[50px] mx-auto w-[90%] md:w-[85%] xl:w-[900px] md:grid md:grid-cols-2">
-                <div className="md:w-[90%] ">
-                    <div className="border-[3px] border-print-blue-light rounded-lr aspect-[1/1]">
+            <main className="mt-[50px] mx-auto w-[90%] md:w-[85%] xl:w-[900px] md:grid md:grid-cols-[2fr_1fr]">
+                <div className="md:w-[90%]">
+                    <div className="relative border-[3px] border-print-blue-light rounded-lr aspect-[3/2]">
                         <ImageFallback
                             name={item?.name}
-                            src={item?.images[0]}
-                            width={450}
+                            src={img?.img}
+                            width={650}
                         />
+                        <button
+                            className="absolute flex h-[50px] w-[30px] items-center justify-center top-[calc(50%-25px)] left-0 text-white bg-print-grey bg-opacity-[0.45] rounded-r"
+                            onClick={() => {
+                                const pos = img.pos === 0 ? item?.images.length - 1 : img.pos - 1;
+                                setImg({ img: item?.images[pos], pos: pos });
+                            }}>
+                            {"<"}
+                        </button>
+                        <button
+                            className="absolute flex h-[50px] w-[30px] items-center justify-center top-[calc(50%-25px)] right-0 text-white bg-print-grey bg-opacity-[0.45] rounded-l"
+                            onClick={() => {
+                                const pos = img.pos + 1 === item?.images.length ? 0 : img.pos + 1;
+                                setImg({ img: item?.images[pos], pos: pos });
+                            }}>
+                            {">"}
+                        </button>
                     </div>
                     <p className="mt-[10px] hidden md:block">
                         All sizes are in the format: <br /> <b>Length x Width x Height</b>

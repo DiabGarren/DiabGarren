@@ -44,6 +44,7 @@ const config: Config = {
             dark: '#18069e',
           },
           grey: {
+            DEFAULT: '#707070',
             light: '#f2f2f2',
             imgBg: '#1c1c1c',
           },
@@ -61,7 +62,7 @@ const config: Config = {
         'lr': '15px',
       },
       gridTemplateColumns: {
-        'auto-250': 'repeat(auto-fit, 250px)'
+        'auto-300': 'repeat(auto-fit, 300px)'
       },
       animation: {
         'spin-slow': 'spin 2s linear infinite'
