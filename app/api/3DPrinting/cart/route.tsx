@@ -33,6 +33,12 @@ export async function POST(request: Request) {
     try {
         await connectDb();
 
+        let id = cookies().get("3DPrinting-user");
+
+        if (!id) {
+            return createErrorResponse("Please login", 201);
+        }
+
         const body = await request.json();
 
         if (!body.size) {
@@ -41,8 +47,6 @@ export async function POST(request: Request) {
         if (!body.colour) {
             return createErrorResponse("Please select a colour", 201);
         }
-
-        let id = cookies().get("3DPrinting-user");
 
         const curr = await User.findOne({ _id: id?.value });
 
