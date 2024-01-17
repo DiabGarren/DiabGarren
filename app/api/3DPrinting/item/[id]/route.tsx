@@ -8,7 +8,7 @@ export async function GET(request: Request, { params }: { params: { id: string }
         await connectDb();
 
         const id = params.id;
-        const item = await Item.find({ _id: id });
+        const item = await Item.findOne({ _id: id });
 
         let response = {
             status: "success",
