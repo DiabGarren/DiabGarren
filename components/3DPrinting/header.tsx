@@ -21,6 +21,10 @@ export default function Header(props: any) {
         </a>
     );
     if (props.user) {
+        let cartLength = 0;
+        props.user.cart.forEach((item: any) => {
+            cartLength += item.qty;
+        });
         profile = (
             <div className="flex justify-end items-center">
                 <a
@@ -42,7 +46,7 @@ export default function Header(props: any) {
                         />
                     </svg>
                     <p className="absolute top-0 right-0 flex border-[2px] rounded-[50%] w-[20px] md:w-[25px] h-[20px] md:h-[25px] justify-center items-center text-white bg-print-blue">
-                        {props.cart ? props.cart : props.user.cart.length}
+                        {props.cart ? props.cart : cartLength}
                     </p>
                 </a>
                 <a

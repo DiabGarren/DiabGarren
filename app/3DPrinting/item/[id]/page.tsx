@@ -31,7 +31,11 @@ export default function ItemPage({ params }: { params: { id: string } }) {
                 .then((data) => {
                     if (data.status === "success") {
                         setUser(data.data);
-                        setCart(data.data.cart.length);
+                        let cartLength = 0;
+                        data.data.cart.forEach((item: any) => {
+                            cartLength += item.qty;
+                        });
+                        setCart(cartLength);
                     }
                 });
         };
