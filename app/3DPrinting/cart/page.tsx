@@ -26,7 +26,6 @@ export default function Cart() {
         user?.cart.forEach((item) => {
             total += item.price * item.qty;
         });
-
         return total;
     };
 
