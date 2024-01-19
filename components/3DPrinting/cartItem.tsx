@@ -2,23 +2,97 @@ import ImageFallback from "./imageFallback";
 
 export default function CartItem(props: any) {
     return (
-        <div className="flex mb-[30px] gap-[10px]">
-            <a className={`block border-2 border-print-blue rounded-lr`}>
+        <div className="max-w-[250px] md:max-w-fit mx-auto md:flex mb-[30px] gap-[10px]">
+            <a className={`block border-2 border-print-blue rounded-lr max-w-[250px]`}>
                 <ImageFallback
-                    src={props.image}
-                    name={props.name}
-                    width={175}
+                    src={props.item.image}
+                    name={props.item.name}
+                    width={300}
                 />
             </a>
             <div className="flex flex-col justify-evenly">
-                <h2>{props.name}</h2>
-                <p>Size: {props.size}</p>
-                <div className="flex gap-[15px]">
-                    <p>R{props.price}</p>
-                    <p>Qty: {props.qty}</p>
+                <h2>{props.item.name}</h2>
+                <p>Size: {props.item.size}</p>
+                <p>Colour: {props.item.colour}</p>
+                <div className="flex gap-[20px] md:gap-[15px]">
+                    <p>R{props.item.price}</p>
+                    <p className="flex">
+                        Qty:{" "}
+                        <button
+                            className="w-[25px] bg-print-grey-light-1 border border-print-grey-1 rounded-l text-[18px] ml-[5px]"
+                            onClick={async () => {
+                                const itemIndex = props.cart.findIndex(
+                                    (item: any) => item === props.item
+                                );
+                                let cart = props.cart;
+                                if (cart[itemIndex].qty === 1) {
+                                    cart.splice(itemIndex, 1);
+                                } else {
+                                    cart[itemIndex].qty -= 1;
+                                }
+
+                                await fetch(process.env.NEXT_PUBLIC_API_URL + "/3DPrinting/cart", {
+                                    method: "PUT",
+                                    headers: { "Content-Type": "application/json" },
+                                    body: JSON.stringify({
+                                        cart: cart,
+                                    }),
+                                })
+                                    .then((res) => res.json())
+                                    .then((data) => {
+                                        if (data.status === "success") window.location.reload();
+                                    });
+                            }}>
+                            {"-"}
+                        </button>
+                        <span className="inline-block min-w-[25px] border border-print-grey text-center">
+                            {props.item.qty}
+                        </span>
+                        <button
+                            className="w-[25px] bg-print-grey-light-1 border border-print-grey-1 rounded-r text-[18px]"
+                            onClick={async () => {
+                                const itemIndex = props.cart.findIndex(
+                                    (item: any) => item === props.item
+                                );
+                                let cart = props.cart;
+                                cart[itemIndex].qty += 1;
+
+                                await fetch(process.env.NEXT_PUBLIC_API_URL + "/3DPrinting/cart", {
+                                    method: "PUT",
+                                    headers: { "Content-Type": "application/json" },
+                                    body: JSON.stringify({
+                                        cart: cart,
+                                    }),
+                                })
+                                    .then((res) => res.json())
+                                    .then((data) => {
+                                        if (data.status === "success") window.location.reload();
+                                    });
+                            }}>
+                            {"+"}
+                        </button>
+                    </p>
                 </div>
 
-                <button className="bg-print-red hover:bg-white border-2 border-print-red rounded w-[150px] h-[30px] py-[2px] [&_svg_path]:hover:fill-print-red">
+                <button
+                    className="bg-print-red hover:bg-white border-2 border-print-red rounded md:w-[200px] h-[30px] py-[2px] [&_svg_path]:hover:fill-print-red mt-[10px] md:mt-0"
+                    onClick={async () => {
+                        const itemIndex = props.cart.findIndex((item: any) => item === props.item);
+                        let cart = props.cart;
+                        cart.splice(itemIndex, 1);
+
+                        await fetch(process.env.NEXT_PUBLIC_API_URL + "/3DPrinting/cart", {
+                            method: "PUT",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({
+                                cart: cart,
+                            }),
+                        })
+                            .then((res) => res.json())
+                            .then((data) => {
+                                if (data.status === "success") window.location.reload();
+                            });
+                    }}>
                     <svg
                         className="w-[100%] h-[100%]"
                         xmlns="http://www.w3.org/2000/svg"

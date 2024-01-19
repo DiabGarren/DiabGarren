@@ -45,7 +45,10 @@ const config: Config = {
           },
           grey: {
             DEFAULT: '#707070',
-            light: '#f2f2f2',
+            light: {
+              DEFAULT: '#f2f2f2',
+              1: "#d6d6d6"
+            },
             imgBg: '#1c1c1c',
           },
           green: {

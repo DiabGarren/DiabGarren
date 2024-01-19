@@ -84,3 +84,28 @@ export async function POST(request: Request) {
         return createErrorResponse(error.message, 500);
     }
 }
+
+export async function PUT(request: Request) {
+    try {
+        await connectDb();
+
+        let id = cookies().get("3DPrinting-user");
+
+        const body = await request.json();
+
+        const user = await User.findOne({ _id: id?.value });
+
+        const cart = body.cart;
+
+        await User.updateOne({ _id: id?.value }, { cart: cart });
+
+        let response = { status: "success", message: "Cart updated" };
+
+        return new NextResponse(JSON.stringify(response), {
+            status: 201,
+            headers: { "Content-Type": "application/json" },
+        });
+    } catch (error: any) {
+        return createErrorResponse(error.message, 500);
+    }
+}
