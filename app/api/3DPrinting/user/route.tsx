@@ -89,20 +89,15 @@ export async function POST(request: Request) {
             subject: "Welcome to Diab Desgin's 3D Printing!",
             html: `<h2>Dear ${user.firstName} ${user.lastName}</h2><p>Thank you for creating an account.<br>Contact <a href="mailto:garrendiab@gmail.com">@Garren Diab</a> if you have any queries or concerns.</p>`,
         };
-        try {
-            await sgMail.send(message);
-            console.log("Email sent");
-        } catch (error) {
-            console.log(error);
-        }
-
         const confirm = {
             to: `${process.env.GMAIL}`,
-            from: `${process.env.GMAIL}`,
+            from: `${process.env.GMAIL_SELF}`,
             subject: "New 3D Printing User",
             html: `<h2>${user.firstName} ${user.lastName}</h2><p>has just created a 3D printing account.</p>`,
         };
+
         try {
+            await sgMail.send(message);
             await sgMail.send(confirm);
             console.log("Email sent");
         } catch (error) {
