@@ -62,11 +62,15 @@ export default function Cart() {
                     <h2>Cart total:</h2>
                     <p className="text-[18px]">R{getTotal()}</p>
                 </div>
-                <a
-                    href="/3DPrinting/checkout"
-                    className="block bg-print-blue hover:bg-print-blue-light text-white rounded w-[288px] md:w-[70%] md:w-[350px] h-[35px] py-[5px] mx-auto mt-[15px] text-center cursor-pointer">
-                    Checkout
-                </a>
+                {cart.length > 0 ? (
+                    <a
+                        href="/3DPrinting/checkout"
+                        className="block bg-print-blue hover:bg-print-blue-light text-white rounded w-[288px] md:w-[70%] md:w-[350px] h-[35px] py-[5px] mx-auto mt-[15px] text-center cursor-pointer">
+                        Checkout
+                    </a>
+                ) : (
+                    <></>
+                )}
             </main>
         </>
     );
