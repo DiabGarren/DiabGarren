@@ -20,6 +20,12 @@ const userSchema = new Schema({
             qty: Number,
         },
     ],
+    address: {
+        line1: String,
+        line2: String,
+        city: String,
+        postalCode: String,
+    },
 });
 
 const User = models.User || model("User", userSchema);
