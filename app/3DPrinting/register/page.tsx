@@ -57,7 +57,9 @@ export default function SignUp() {
                     className="mt-[50px] shadow-2xl rounded-lr p-[20px]">
                     <p className="text-print-red text-[1.1rem]">{error}</p>
                     <div className="mb-[15px]">
-                        <label>First Name</label>
+                        <label>
+                            First Name<span className="text-print-red">*</span>
+                        </label>
                         <input
                             type="text"
                             name="firstName"
@@ -66,7 +68,9 @@ export default function SignUp() {
                             onChange={(event) => setFirstName(event.target.value)}
                             required
                         />
-                        <label>Last Name</label>
+                        <label>
+                            Last Name<span className="text-print-red">*</span>
+                        </label>
                         <input
                             type="text"
                             name="lastName"
@@ -77,7 +81,9 @@ export default function SignUp() {
                         />
                     </div>
                     <div className="mb-[15px]">
-                        <label>Username</label>
+                        <label>
+                            Username<span className="text-print-red">*</span>
+                        </label>
                         <input
                             type="text"
                             name="username"
@@ -86,7 +92,9 @@ export default function SignUp() {
                             onChange={(event) => setUsername(event.target.value)}
                             required
                         />
-                        <label>Email</label>
+                        <label>
+                            Email<span className="text-print-red">*</span>
+                        </label>
                         <input
                             type="email"
                             name="email"
@@ -95,16 +103,21 @@ export default function SignUp() {
                             onChange={(event) => setEmail(event.target.value)}
                             required
                         />
-                        <label>Cell number</label>
+                        <label>
+                            Cell number<span className="text-print-red">*</span>
+                        </label>
                         <input
                             type="text"
                             name="phone"
                             className="form-input"
                             placeholder="(000) 123 4567"
                             onChange={(event) => setPhone(event.target.value)}
+                            required
                         />
                         <div>
-                            <label>Prefered contact method</label>
+                            <label>
+                                Prefered contact method<span className="text-print-red">*</span>
+                            </label>
                             <div className="grid grid-cols-[3fr_4fr_2fr] bg-print-grey-light rounded p-[2px_5px]">
                                 <div>
                                     <label>Text</label>
@@ -114,6 +127,7 @@ export default function SignUp() {
                                         className="form-radio"
                                         onChange={() => setPrefer("Text")}
                                         id=""
+                                        required
                                     />
                                 </div>
                                 <div>
@@ -124,6 +138,7 @@ export default function SignUp() {
                                         className="form-radio"
                                         onChange={() => setPrefer("WhatsApp")}
                                         id=""
+                                        required
                                     />
                                 </div>
                                 <div>
@@ -134,13 +149,16 @@ export default function SignUp() {
                                         className="form-radio"
                                         onChange={() => setPrefer("Email")}
                                         id=""
+                                        required
                                     />
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <label>Password</label>
+                    <label>
+                        Password<span className="text-print-red">*</span>
+                    </label>
                     <input
                         type="password"
                         name="password"
@@ -149,7 +167,9 @@ export default function SignUp() {
                         onChange={(event) => setPassword(event.target.value)}
                         required
                     />
-                    <label>Confirm Password</label>
+                    <label>
+                        Confirm Password<span className="text-print-red">*</span>
+                    </label>
                     <input
                         type="password"
                         name="password"
