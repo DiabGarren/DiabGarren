@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-key */
 "use client";
+import Footer from "@/components/3DPrinting/footer";
 import Header from "@/components/3DPrinting/header";
 import ItemCard from "@/components/3DPrinting/itemCard";
 import { Item } from "@/lib/3DPrinting/item";
@@ -40,11 +41,12 @@ export default function Page() {
     return (
         <>
             <Header user={user} />
-            <main className="grid grid-cols-1 md:grid-cols-auto-300 justify-center gap-[10px] mt-[50px] w-[90%] mx-auto">
+            <main className="grid grid-cols-1 md:grid-cols-auto-300 justify-center gap-[10px] my-[50px] w-[90%] mx-auto">
                 {items?.map((item) => {
                     return <ItemCard {...item} />;
                 })}
             </main>
+            <Footer />
         </>
     );
 }
