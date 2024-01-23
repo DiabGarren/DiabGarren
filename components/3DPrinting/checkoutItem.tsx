@@ -3,7 +3,7 @@ import ImageFallback from "./imageFallback";
 export default function CheckoutItem(props: any) {
     return (
         <div className="flex border-b border-print-grey-light-1 py-[5px] last:border-none gap-[5px] justify-center">
-            <div className="w-[30%] self-center">
+            <div className="w-[30%] md:w-[150px] self-center">
                 <ImageFallback
                     src={props.image}
                     name={props.name}
@@ -13,7 +13,18 @@ export default function CheckoutItem(props: any) {
             <div className="w-[200px]">
                 <h3 className="text-[18px] font-[500]">{props.name}</h3>
                 <p>Size: {props.size}</p>
-                <p>Colour: {props.colour}</p>
+                <p>
+                    Colour: {props.colour[0]?.toUpperCase()}
+                    {props.colour?.substring(1)}
+                </p>
+                {props.base ? (
+                    <p>
+                        Base: {props.base[0]?.toUpperCase()}
+                        {props.base?.substring(1)}
+                    </p>
+                ) : (
+                    <></>
+                )}
                 <p>
                     R{props.price} <span className="ml-[10px]">Qty: {props.qty}</span>
                 </p>

@@ -3,5 +3,6 @@ export interface Item {
     name: string;
     colours: [string];
     options: [{ size: string; price: number; other: string }];
+    bases: [string] | undefined;
     images: [string];
 }

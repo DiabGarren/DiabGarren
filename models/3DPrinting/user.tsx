@@ -16,6 +16,7 @@ const userSchema = new Schema({
             size: String,
             price: Number,
             colour: String,
+            base: String,
             image: String,
             qty: Number,
         },

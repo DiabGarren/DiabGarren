@@ -2,18 +2,31 @@ import ImageFallback from "./imageFallback";
 
 export default function CartItem(props: any) {
     return (
-        <div className="max-w-[250px] md:max-w-fit mx-auto md:flex mb-[30px] gap-[10px]">
-            <a className={`block border-2 border-print-blue rounded-lr max-w-[250px]`}>
+        <div className="w-fit mx-auto md:flex mb-[30px] gap-[10px]">
+            <a
+                href={`/3DPrinting/item/${props.item._id}`}
+                className={`block border-2 border-print-blue rounded-lr max-w-[250px] mx-auto md:mx-0 h-fit my-auto`}>
                 <ImageFallback
                     src={props.item.image}
                     name={props.item.name}
                     width={300}
                 />
             </a>
-            <div className="flex flex-col justify-evenly">
-                <h2>{props.item.name}</h2>
+            <div className="flex flex-col justify-evenly w-[200px] gap-[5px]">
+                <h2 className="text-wrap">{props.item.name}</h2>
                 <p>Size: {props.item.size}</p>
-                <p>Colour: {props.item.colour}</p>
+                <p>
+                    Colour: {props.item.colour[0]?.toUpperCase()}
+                    {props.item.colour?.substring(1)}
+                </p>
+                {props.item.base ? (
+                    <p>
+                        Base: {props.item.base[0]?.toUpperCase()}
+                        {props.item.base?.substring(1)}
+                    </p>
+                ) : (
+                    <></>
+                )}
                 <div className="flex gap-[20px] md:gap-[15px]">
                     <p>R{props.item.price}</p>
                     <p className="flex">
@@ -75,7 +88,7 @@ export default function CartItem(props: any) {
                 </div>
 
                 <button
-                    className="bg-print-red hover:bg-white border-2 border-print-red rounded md:w-[200px] h-[30px] py-[2px] [&_svg_path]:hover:fill-print-red mt-[10px] md:mt-0"
+                    className="bg-print-red hover:bg-white border-2 border-print-red rounded md:w-[200px] h-[30px] py-[2px] [&_svg_path]:hover:fill-print-red mt-[10px] md:mt-[2px]"
                     onClick={async () => {
                         const itemIndex = props.cart.findIndex((item: any) => item === props.item);
                         let cart = props.cart;

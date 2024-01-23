@@ -53,7 +53,10 @@ export async function POST(request: Request) {
 
         const existing = cart.findIndex(
             (item: any) =>
-                item.name === body.name && item.size === body.size && item.colour === body.colour
+                item.name === body.name &&
+                item.size === body.size &&
+                item.colour === body.colour &&
+                item.base === body.base
         );
 
         if (existing > -1) {
@@ -65,14 +68,13 @@ export async function POST(request: Request) {
                 size: body.size,
                 price: body.price,
                 colour: body.colour,
+                base: body.base,
                 image: body.image,
                 qty: 1,
             });
         }
 
-        // const cart = JSON.parse(JSON.stringify(curr)).cart;
-
-        const user = await User.updateOne({ _id: id?.value }, { cart: cart });
+        await User.updateOne({ _id: id?.value }, { cart: cart });
 
         let response = { status: "success", message: "Item added to cart" };
 

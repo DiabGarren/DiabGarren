@@ -2,7 +2,7 @@ import ImageFallback from "./imageFallback";
 
 export default function ItemCard(props: any) {
     return (
-        <div className="grid border-2 border-print-blue rounded-lr w-[100%] md:w-[300px]">
+        <div className="grid border-2 border-print-blue rounded-lr w-[100%] sm:max-w-[400px] sm:mx-auto md:w-[300px] aspect-[3/2]">
             <a href={`/3DPrinting/item/${props._id}`}>
                 <ImageFallback
                     name={props.name}
@@ -11,15 +11,15 @@ export default function ItemCard(props: any) {
                     round={"t"}
                 />
             </a>
-            <div className="p-[10px] bg-print-blue-light-1">
-                <h2 className="text-[1.2rem]">{props.name}</h2>
+            <div className="flex flex-col p-[10px] bg-print-blue-light-1 min-h-[110px] justify-center">
+                <h2 className="text-[1.2rem] mb-[10px]">{props.name}</h2>
                 <p>
                     {props.options.length > 1 ? "From" : ""} R{props.options[0].price}
                 </p>
             </div>
             <a
                 href={`/3DPrinting/item/${props._id}`}
-                className="bg-print-blue rounded-b-[12px] text-center text-white text-[1.2rem] py-[2px] hover:bg-print-blue-light">
+                className="bg-print-blue rounded-b-[12px] text-center text-white text-[1.2rem] py-[2px] hover:bg-print-blue-light h-[33px]">
                 View Item
             </a>
         </div>
