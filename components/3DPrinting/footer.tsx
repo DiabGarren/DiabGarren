@@ -15,7 +15,7 @@ export default function Footer() {
                 <br className="md:hidden" />
                 or WhatsApp/Call me at <br className="md:hidden" />
                 <a
-                    href="mailto:0609811694"
+                    href="rel:0609811694"
                     className="underline">
                     060 981 1694
                 </a>
