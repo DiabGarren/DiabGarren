@@ -70,8 +70,6 @@ export default function Header(props: any) {
         );
     }
 
-    // console.log(props.cart, props.user.cart.length);
-
     return (
         <header
             className={`grid ${
@@ -91,7 +89,7 @@ export default function Header(props: any) {
                 />
             </a>
             <h1 className="text-white text-[25px] md:text-[30px] font-[700] text-center">
-                {props.title || "3D Printing"}
+                3D Printing
             </h1>
             {profile}
         </header>
