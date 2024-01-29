@@ -23,7 +23,8 @@ export default function Confirm() {
             user={user}
             cart={null}
             mainClass={"w-[90%] md:w-[350px] mx-auto my-[50px]"}>
-            <h2 className="text-center mb-[10px]">Order Confirmed</h2>
+            <h2 className="text-center mb-[5px]">Order Confirmed</h2>
+            <p className="text-center mb-[10px]">Thank you for shopping with us.</p>
             <a
                 href="/3DPrinting/"
                 className="block bg-print-blue hover:bg-print-blue-light text-white rounded p-[5px_10px] w-[100%] text-center text-[18px]">

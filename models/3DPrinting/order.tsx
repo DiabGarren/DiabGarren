@@ -16,6 +16,7 @@ const OrderSchema = new Schema({
     ],
     shipping: String,
     total: Number,
+    fulfilled: Boolean,
 });
 
 const Order = models.Order || model("Order", OrderSchema);

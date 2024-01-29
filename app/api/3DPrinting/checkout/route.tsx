@@ -57,6 +57,7 @@ export async function POST(request: Request) {
             order: order,
             shipping: body.shipping,
             total: total,
+            fulfilled: false,
         });
 
         sgMail.setApiKey(`${process.env.SENDGRID_API}`);
