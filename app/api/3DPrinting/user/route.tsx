@@ -71,8 +71,8 @@ export async function POST(request: Request) {
             level: 1,
             cart: [],
             address: {
-                line1: "",
-                line2: "",
+                street: "",
+                suburb: "",
                 city: "",
                 postalCode: "",
             },

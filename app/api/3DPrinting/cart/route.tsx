@@ -35,7 +35,7 @@ export async function POST(request: Request) {
 
         let id = cookies().get("3DPrinting-user");
 
-        if (!id) {
+        if (!id || id.value === "") {
             return createErrorResponse("Please login", 201);
         }
 

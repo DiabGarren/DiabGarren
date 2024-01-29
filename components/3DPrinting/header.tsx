@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Popup from "reactjs-popup";
 
 export default function Header(props: any) {
     let profile = (
@@ -49,23 +50,47 @@ export default function Header(props: any) {
                         {props.cart ? props.cart : cartLength}
                     </p>
                 </a>
-                <a
-                    href="/3DPrinting/profile"
-                    className="flex items-center justify-center w-[40px] md:w-[60px] h-[40px] md:h-[60px] rounded-[50%] border-2 p-[5px] hover:bg-print-blue-light cursor-pointer justify-self-end mr-[10px]">
-                    <svg
-                        className="w-[93%] h-[100%]"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="69"
-                        height="67"
-                        viewBox="0 0 69 67"
-                        fill="none">
-                        <path
-                            d="M2 67C2 59.591 8.09375 50.4981 16.2187 50.4982C30.4973 50.4982 38.901 50.4982 52.7812 50.4982C61.3136 50.4981 67 58.9175 67 67M14.1875 22.8828C14.4633 33.9465 23.3763 42.5733 34.5 42.7524C46.0907 42.939 55.7769 33.4006 55.4896 21.8725C55.2091 10.6198 45.8137 1.81613 34.5 2.00292C23.0948 2.19122 13.9047 11.5391 14.1875 22.8828Z"
-                            stroke="white"
-                            stroke-width="4"
-                        />
-                    </svg>
-                </a>
+
+                <Popup
+                    trigger={
+                        <a
+                            // href="/3DPrinting/profile"
+                            className="flex items-center justify-center w-[40px] md:w-[60px] h-[40px] md:h-[60px] rounded-[50%] border-2 p-[5px] hover:bg-print-blue-light cursor-pointer justify-self-end mr-[10px]">
+                            <svg
+                                className="w-[93%] h-[100%]"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="69"
+                                height="67"
+                                viewBox="0 0 69 67"
+                                fill="none">
+                                <path
+                                    d="M2 67C2 59.591 8.09375 50.4981 16.2187 50.4982C30.4973 50.4982 38.901 50.4982 52.7812 50.4982C61.3136 50.4981 67 58.9175 67 67M14.1875 22.8828C14.4633 33.9465 23.3763 42.5733 34.5 42.7524C46.0907 42.939 55.7769 33.4006 55.4896 21.8725C55.2091 10.6198 45.8137 1.81613 34.5 2.00292C23.0948 2.19122 13.9047 11.5391 14.1875 22.8828Z"
+                                    stroke="white"
+                                    stroke-width="4"
+                                />
+                            </svg>
+                        </a>
+                    }
+                    position={"bottom right"}>
+                    <button
+                        onClick={async () => {
+                            await fetch(process.env.NEXT_PUBLIC_API_URL + "/3DPrinting/logout", {
+                                method: "POST",
+                                headers: { "Content-Type": "application/json" },
+                            })
+                                .then((res) => res.json())
+                                .then((data) => {
+                                    if (data.status === "success") {
+                                        window.location.href = "/3DPrinting";
+                                    }
+                                });
+                        }}
+                        className="border border-print-blue bg-print-blue hover:bg-print-blue-light text-white rounded p-[2px_5px] text-[18px]">
+                        Logout
+                    </button>
+                    {/* <div className="border-2 border-print-blue rounded-lr p-[5px]">
+                    </div> */}
+                </Popup>
             </div>
         );
     }

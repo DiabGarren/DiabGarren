@@ -22,8 +22,8 @@ const userSchema = new Schema({
         },
     ],
     address: {
-        line1: String,
-        line2: String,
+        street: String,
+        suburb: String,
         city: String,
         postalCode: String,
     },

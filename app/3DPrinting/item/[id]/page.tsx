@@ -235,7 +235,7 @@ export default function ItemPage({ params }: { params: { id: string } }) {
                 <h2
                     className={`${
                         notify?.status === "success" ? "text-print-green" : "text-print-red"
-                    } text-center mt-[30px]`}>
+                    } text-center mt-[30px] w-[300px]`}>
                     {notify?.message}
                 </h2>
                 <div className="w-[300px] mx-auto md:mx-0">

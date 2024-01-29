@@ -19,8 +19,8 @@ export interface User {
         }
     ];
     address: {
-        line1: string;
-        line2: string;
+        street: string;
+        suburb: string;
         city: string;
         postalCode: string;
     };
