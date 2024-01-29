@@ -55,6 +55,7 @@ export async function POST(request: Request) {
             name: `${user.firstName} ${user.lastName}`,
             date: Date.now(),
             order: order,
+            shipping: body.shipping,
             total: total,
         });
 
@@ -65,9 +66,9 @@ export async function POST(request: Request) {
             subject: "3D Printing Order Placed",
             html: `<h2>Dear ${user.firstName} ${
                 user.lastName
-            }</h2><p>Thank you for placing an order with Custom 3D Printing.<br>We will contact you as soon as possible to confirm everything and send you an invoice.</p><div>${user.cart.map(
+            }</h2><p>Thank you for placing an order with Custom 3D Printing.<br>We will contact you as soon as possible to confirm everything and send you an invoice.</p><div><h3>Order:</h3>${user.cart.map(
                 (item: any) => {
-                    return `<h3 style="font-size: 18px; font-weight:500;">${item.name}</h3>
+                    return `<h4>${item.name}</h4>
                     <p>Size: ${item.size}</p>
                     <p>
                         Colour: ${item.colour[0]?.toUpperCase()}${item.colour?.substring(1)}
@@ -84,6 +85,13 @@ export async function POST(request: Request) {
                     </p>`;
                 }
             )}
+            <h3>Shipping method:</h3>
+            <p>${body.shipping[0].toUpperCase()}${body.shipping.substring(1)}</p>
+            ${
+                body.shipping === "deliver"
+                    ? `<h3>Address:</h3><p>${address.street}<br>${address.suburb}<br>${address.city}<br>${address.postalCode}</p>`
+                    : ""
+            }
             <h2>Total: R${total}</h2></div>`,
         };
         try {
@@ -99,8 +107,9 @@ export async function POST(request: Request) {
             subject: "New 3D Printing Order",
             html: `<h2>${user.firstName} ${
                 user.lastName
-            }</h2><p>has just placed an order.</p><div>${user.cart.map((item: any) => {
-                return `<h3 style="font-size: 18px; font-weight:500;">${item.name}</h3>
+            }</h2><p>has just placed an order.</p><div><h3>Order:</h3>${user.cart.map(
+                (item: any) => {
+                    return `<h4>${item.name}</h4>
                     <p>Size: ${item.size}</p>
                     <p>
                         Colour: ${item.colour[0]?.toUpperCase()}${item.colour?.substring(1)}
@@ -115,7 +124,15 @@ export async function POST(request: Request) {
                     <p>
                         R${item.price} <span style="margin-left: 10px;">Qty: ${item.qty}</span>
                     </p>`;
-            })}
+                }
+            )}
+            <h3>Shipping method:</h3>
+            <p>${body.shipping[0].toUpperCase()}${body.shipping.substring(1)}</p>
+            ${
+                body.shipping === "deliver"
+                    ? `<h3>Address:</h3><p>${address.street}<br>${address.suburb}<br>${address.city}<br>${address.postalCode}</p>`
+                    : ""
+            }
             <h2>Total: R${total}</h2></div>`,
         };
 

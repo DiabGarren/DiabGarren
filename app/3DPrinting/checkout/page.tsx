@@ -74,11 +74,11 @@ export default function Checkout() {
                     position="bottom center">
                     <div className="w-[250px] md:w-[300px] ml-[-35px] md:ml-0 bg-white rounded-lr p-[10px] shadow-xl border-2 border-print-blue">
                         <p>
-                            With {'"Custom 3D Printing"'} just starting out, we have not yet
-                            determined a standard form for deliveries.
+                            {'"Custom 3D Printing"'} is a startup. We have not yet determined a
+                            standard form for deliveries.
                             <br />
-                            Because of this, the final price and method of delivery will be
-                            communicated with you after an order has been placed.
+                            The final price and method of delivery will be communicated with you
+                            after an order has been placed.
                         </p>
                     </div>
                 </Popup>{" "}
@@ -197,9 +197,9 @@ export default function Checkout() {
                         .then((response) => response.json())
                         .then((data) => {
                             setMessage(data);
-                            console.log(data);
 
-                            if (data.status === "success") window.location.href = "/3DPrinting";
+                            if (data.status === "success")
+                                window.location.href = "/3DPrinting/checkout/confirm";
                         })
                 }>
                 Place Order

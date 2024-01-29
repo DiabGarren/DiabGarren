@@ -14,6 +14,7 @@ const OrderSchema = new Schema({
             qty: Number,
         },
     ],
+    shipping: String,
     total: Number,
 });
 
