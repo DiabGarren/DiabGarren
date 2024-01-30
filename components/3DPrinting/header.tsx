@@ -72,24 +72,27 @@ export default function Header(props: any) {
                         </a>
                     }
                     position={"bottom right"}>
-                    <button
-                        onClick={async () => {
-                            await fetch(process.env.NEXT_PUBLIC_API_URL + "/3DPrinting/logout", {
-                                method: "POST",
-                                headers: { "Content-Type": "application/json" },
-                            })
-                                .then((res) => res.json())
-                                .then((data) => {
-                                    if (data.status === "success") {
-                                        window.location.href = "/3DPrinting";
+                    <div className="flex flex-col [&_a]:rounded-t-md [&_a]:border-b [&_a]:border-print-blue-dark [&_button]:rounded-b-md w-[300px] [&_*]:bg-print-blue [&_*]:text-white [&_*]:text-center [&_*]:text-[18px] [&_*]:p-[10px_0] hover:[&_*]:bg-print-blue-light ">
+                        <a href="/3DPrinting/orders">Orders</a>
+                        <button
+                            onClick={async () => {
+                                await fetch(
+                                    process.env.NEXT_PUBLIC_API_URL + "/3DPrinting/logout",
+                                    {
+                                        method: "POST",
+                                        headers: { "Content-Type": "application/json" },
                                     }
-                                });
-                        }}
-                        className="border border-print-blue bg-print-blue hover:bg-print-blue-light text-white rounded p-[2px_5px] text-[18px]">
-                        Logout
-                    </button>
-                    {/* <div className="border-2 border-print-blue rounded-lr p-[5px]">
-                    </div> */}
+                                )
+                                    .then((res) => res.json())
+                                    .then((data) => {
+                                        if (data.status === "success") {
+                                            window.location.href = "/3DPrinting";
+                                        }
+                                    });
+                            }}>
+                            Logout
+                        </button>
+                    </div>
                 </Popup>
             </div>
         );

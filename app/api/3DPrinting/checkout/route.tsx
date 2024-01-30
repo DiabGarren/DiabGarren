@@ -45,19 +45,23 @@ export async function POST(request: Request) {
                 size: item.size,
                 colour: item.colour,
                 base: item.base,
+                image: item.image,
                 price: item.price,
                 qty: item.qty,
             };
         });
 
+        // const now = Date.now();
+        // const date = `${now.getFullYear()}`;
+
         await Order.create({
             userId: user.id,
             name: `${user.firstName} ${user.lastName}`,
-            date: Date.now(),
+            date: new Date(),
             order: order,
             shipping: body.shipping,
             total: total,
-            fulfilled: false,
+            status: "Recieved",
         });
 
         sgMail.setApiKey(`${process.env.SENDGRID_API}`);
