@@ -84,7 +84,7 @@ const config: Config = {
     plugin(function ({ addComponents, theme }: { addComponents: any, theme: any; }) {
       addComponents({
         '.form-input': {
-          backgroundColor: theme('colors.print.grey.light'),
+          backgroundColor: theme('colors.print.grey.light.DEFAULT'),
           borderRadius: theme('borderRadius.DEFAULT'),
           padding: '2px 5px',
           marginBottom: '5px',
