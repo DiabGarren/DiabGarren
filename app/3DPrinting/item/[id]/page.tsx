@@ -106,7 +106,7 @@ export default function ItemPage({ params }: { params: { id: string } }) {
                     <ImageFallback
                         name={item?.name}
                         src={img?.img}
-                        width={650}
+                        width={740}
                     />
                     <button
                         className="absolute flex h-[50px] w-[30px] items-center justify-center top-[calc(50%-25px)] left-0 text-white bg-print-grey bg-opacity-[0.45] rounded-r"
