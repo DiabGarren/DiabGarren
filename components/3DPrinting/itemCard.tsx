@@ -2,7 +2,7 @@ import ImageFallback from "./imageFallback";
 
 export default function ItemCard(props: any) {
     return (
-        <div className="grid border-2 border-print-blue rounded-lr w-[100%] sm:max-w-[400px] sm:mx-auto md:w-[300px] aspect-[3/2]">
+        <div className="grid border-2 border-print-blue rounded-lr w-[100%] sm:max-w-[400px] sm:mx-auto md:w-[300px]">
             <a href={`/3DPrinting/item/${props._id}`}>
                 <ImageFallback
                     name={props.name}
