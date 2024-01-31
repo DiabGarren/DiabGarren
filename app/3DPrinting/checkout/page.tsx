@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-key */
 "use client";
+import Back from "@/components/3DPrinting/back";
 import PrintBody from "@/components/3DPrinting/body";
 import CheckoutItem from "@/components/3DPrinting/checkoutItem";
 import { User } from "@/lib/3DPrinting/user";
@@ -48,6 +49,7 @@ export default function Checkout() {
             user={user}
             cart={null}
             mainClass={"w-[90%] md:w-[350px] mx-auto my-[50px]"}>
+            <Back href="/cart" />
             <h2>Cart Summary:</h2>
             <div>
                 {user?.cart.map((item: any) => {

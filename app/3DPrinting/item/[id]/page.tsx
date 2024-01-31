@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-key */
 "use client";
+import Back from "@/components/3DPrinting/back";
 import PrintBody from "@/components/3DPrinting/body";
 import ImageFallback from "@/components/3DPrinting/imageFallback";
 import { Item } from "@/lib/3DPrinting/item";
@@ -102,6 +103,7 @@ export default function ItemPage({ params }: { params: { id: string } }) {
                 "my-[50px] mx-auto w-[90%] md:w-[85%] xl:w-[900px] md:grid md:grid-cols-[2fr_1fr]"
             }>
             <div className="md:w-[90%]">
+                <Back href="/" />
                 <div className="relative border-[3px] border-print-blue-light rounded-lr aspect-[3/2]">
                     <ImageFallback
                         name={item?.name}

@@ -1,5 +1,9 @@
+/* eslint-disable react/jsx-key */
 "use client";
+import Back from "@/components/3DPrinting/back";
 import PrintBody from "@/components/3DPrinting/body";
+import CheckoutItem from "@/components/3DPrinting/checkoutItem";
+import ImageFallback from "@/components/3DPrinting/imageFallback";
 import { useEffect, useState } from "react";
 
 export default function OrderPage({ params }: { params: { id: string } }) {
@@ -53,12 +57,19 @@ export default function OrderPage({ params }: { params: { id: string } }) {
             user={user}
             cart={null}
             mainClass={"w-[90%] md:w-[350px] mx-auto my-[50px]"}>
+            <Back href="/orders" />
             <h2 className="text-[25px] font-[600]">
                 Order {new Date(order.date).toLocaleString("default", { weekday: "short" })},{" "}
                 {new Date(order.date).getDate()}{" "}
                 {new Date(order.date).toLocaleString("default", { month: "short" })}{" "}
                 {new Date(order.date).getFullYear()}
             </h2>
+            <div>
+                {order.order.map((item: any) => {
+                    return <CheckoutItem {...item} />;
+                })}
+            </div>
+            <p className="text-right mt-[10px]">Total: R{order.total}</p>
         </PrintBody>
     );
 }
