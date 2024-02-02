@@ -117,13 +117,13 @@ export default function Page() {
                         <label
                             htmlFor="size"
                             className="mx-[10px]">
-                            Approx. size (mm)
+                            Approx. size (Max 20cm)
                         </label>
                         <input
                             type="text"
                             name="size"
                             className="form-input mx-[10px] !w-[calc(100%-20px)]"
-                            placeholder="Height: 60 (Max 200)"
+                            placeholder="Height: 6cm"
                             value={size}
                             onChange={(event) => setSize(event.target.value)}
                         />
