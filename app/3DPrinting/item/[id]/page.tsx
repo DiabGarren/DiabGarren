@@ -134,7 +134,9 @@ export default function ItemPage({ params }: { params: { id: string } }) {
 
             <div>
                 <h1 className="text-[25px] xsm:text-[30px] font-[700]">{item?.name}</h1>
-                <h2>Size (mm):</h2>
+                <h2>
+                    Size (cm) <span className="text-[15px]">(length x width x height)</span>:
+                </h2>
                 <div className="flex flex-wrap gap-[10px]">
                     {item?.options.map((option, index) => {
                         return (
@@ -157,7 +159,11 @@ export default function ItemPage({ params }: { params: { id: string } }) {
                                 <label
                                     htmlFor={`${option.size}-${index}`}
                                     className="cursor-pointer">
-                                    {option.size}
+                                    {option.size.split("x").map((x, index) => {
+                                        return `${x.substring(0, x.length - 1)}${
+                                            index == option.size.split("x").length - 1 ? "" : "x"
+                                        }`;
+                                    })}
                                 </label>
                             </div>
                         );
@@ -248,9 +254,6 @@ export default function ItemPage({ params }: { params: { id: string } }) {
                     </button>
                 </div>
             </div>
-            <p className="mt-[30px] md:hidden">
-                All sizes are in the format: <br /> <b>Length x Width x Height</b>
-            </p>
         </PrintBody>
     );
 }
