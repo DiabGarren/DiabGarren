@@ -12,7 +12,7 @@ export default function ItemPage({ params }: { params: { id: string } }) {
   const [item, setItem] = useState<Item>({
     _id: "",
     name: "",
-    colours: [""],
+    colours: [{ name: "", value: "" }],
     options: [{ size: "", price: 0, other: "" }],
     bases: undefined,
     images: [""],
@@ -63,7 +63,7 @@ export default function ItemPage({ params }: { params: { id: string } }) {
             setChoice({
               size: data.data.options[0].size,
               price: data.data.options[0].price,
-              colour: data.data.colours[0],
+              colour: data.data.colours[0].name,
               base: base,
             });
             setImg({ img: data.data.images[0], pos: 0 });
@@ -185,23 +185,21 @@ export default function ItemPage({ params }: { params: { id: string } }) {
                   className="appearance-none"
                   type="radio"
                   name="colour"
-                  id={colour}
+                  id={colour.name}
                   onClick={() => {
                     setChoice({
                       size: choice.size,
                       price: choice.price,
-                      colour: colour,
+                      colour: colour.name,
                       base: choice.base,
                     });
                   }}
-                  checked={colour === choice.colour}
+                  checked={colour.name === choice.colour}
                 />
                 <label
-                  htmlFor={colour}
-                  //   style={{ backgroundColor: colour }}
-                  className={`absolute block w-[46px] h-[46px] top-[2px] left-[2px] rounded-[50%] cursor-pointer ${
-                    "filament-" + colour
-                  }`}
+                  htmlFor={colour.name}
+                  style={{ backgroundColor: colour.value }}
+                  className={`absolute block w-[46px] h-[46px] top-[2px] left-[2px] rounded-[50%] cursor-pointer`}
                 ></label>
               </div>
             );

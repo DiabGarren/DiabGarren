@@ -56,13 +56,6 @@ const config: Config = {
             light: "#4be94b",
           },
         },
-        filament: {
-          white: "#fff",
-          black: "#000",
-          grey: "#b3cdda",
-          red: "#c94f54",
-          jade_green: "#6ecdb0",
-        },
       },
       borderRadius: {
         DEFAULT: "5px",
