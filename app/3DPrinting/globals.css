@@ -13,22 +13,3 @@ body {
 h2 {
   font-size: 20px;
 }
-
-.filament-white {
-  background-color: #fff;
-}
-.filament-black {
-  background-color: #000;
-}
-.filament-grey {
-  background-color: #adbdc5;
-}
-.filament-blue {
-  background-color: #2273e8;
-}
-.filament-red {
-  background-color: #c94f54;
-}
-.filament-jade_green {
-  background-color: #6ecdb0;
-}
