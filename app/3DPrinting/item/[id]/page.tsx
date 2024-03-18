@@ -13,7 +13,13 @@ export default function ItemPage({ params }: { params: { id: string } }) {
     _id: "",
     name: "",
     colours: [{ name: "", value: "" }],
-    options: [{ size: "", price: 0, other: "" }],
+    options: [
+      {
+        size: "",
+        price: 0,
+        printing: { time: { hours: 0, minutes: 0 }, weight: 0 },
+      },
+    ],
     bases: undefined,
     images: [""],
   });
@@ -22,11 +28,13 @@ export default function ItemPage({ params }: { params: { id: string } }) {
     price: number;
     colour: string;
     base: string;
+    printing: { time: { hours: number; minutes: number }; weight: number };
   }>({
     size: "",
     price: 0,
     colour: "",
     base: "",
+    printing: { time: { hours: 0, minutes: 0 }, weight: 0 },
   });
   const [notify, setNotify] = useState<{ status: string; message: string }>();
 
@@ -65,6 +73,7 @@ export default function ItemPage({ params }: { params: { id: string } }) {
               price: data.data.options[0].price,
               colour: data.data.colours[0].name,
               base: base,
+              printing: data.data.options[0].printing,
             });
             setImg({ img: data.data.images[0], pos: 0 });
           }
@@ -156,6 +165,7 @@ export default function ItemPage({ params }: { params: { id: string } }) {
                       price: option.price,
                       colour: choice.colour,
                       base: choice.base,
+                      printing: option.printing,
                     });
                   }}
                   checked={option.size === choice.size}
@@ -177,7 +187,7 @@ export default function ItemPage({ params }: { params: { id: string } }) {
         <h2>Price:</h2>
         <p>{choice ? `R${choice.price}` : <br />}</p>
         <h2>Colour:</h2>
-        <div className="flex gap-[10px]">
+        <div className="flex flex-wrap gap-[10px]">
           {item?.colours.map((colour) => {
             return (
               <div className="relative bg-print-blue-light-1 w-[50px] h-[50px] rounded-[50%] [&:has(input:checked)]:bg-print-blue cursor-pointer">
@@ -192,6 +202,7 @@ export default function ItemPage({ params }: { params: { id: string } }) {
                       price: choice.price,
                       colour: colour.name,
                       base: choice.base,
+                      printing: choice.printing,
                     });
                   }}
                   checked={colour.name === choice.colour}
@@ -208,7 +219,7 @@ export default function ItemPage({ params }: { params: { id: string } }) {
         {item?.bases ? (
           <>
             <h2>Base:</h2>
-            <div className="flex gap-[10px]">
+            <div className="flex flex-wrap gap-[10px]">
               {item?.bases.map((base) => {
                 return (
                   <div className="flex flex-col items-center">
@@ -224,6 +235,7 @@ export default function ItemPage({ params }: { params: { id: string } }) {
                             price: choice.price,
                             colour: choice.colour,
                             base: base,
+                            printing: choice.printing,
                           });
                         }}
                         checked={base === choice.base}
@@ -247,6 +259,19 @@ export default function ItemPage({ params }: { params: { id: string } }) {
         ) : (
           <></>
         )}
+        {choice.size != "" ? (
+          <div>
+            <h2>Printing time:</h2>
+            <p>
+              {choice.printing.time.hours}h {choice.printing.time.minutes}m
+            </p>
+            <h2>Weight:</h2>
+            <p>{choice.printing.weight}g</p>
+          </div>
+        ) : (
+          <></>
+        )}
+
         <h2
           className={`${
             notify?.status === "success" ? "text-print-green" : "text-print-red"
