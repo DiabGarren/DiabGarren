@@ -46,6 +46,7 @@ export async function POST(request: Request) {
 
     user.cart.forEach((item: any) => {
       total += item.price * item.qty;
+      if (body.shipping == "deliver") total += 60;
     });
 
     const order = user.cart.map((item: any) => {
@@ -111,10 +112,10 @@ export async function POST(request: Request) {
       )}</p>
             ${
               body.shipping === "deliver"
-                ? `<h3>Address:</h3><p>${address.street}<br>${address.suburb}<br>${address.city}<br>${address.postalCode}</p>`
+                ? `<h3>Shipping cost:</h3><p>R60</p><h3>Address:</h3><p>${address.street}<br>${address.suburb}<br>${address.city}<br>${address.postalCode}`
                 : ""
             }
-            <h2>Total: R${total}</h2></div>`,
+			<h2>Total: R${total}</h2></div>`,
     };
     try {
       await sgMail.send(message);
@@ -160,10 +161,10 @@ export async function POST(request: Request) {
       )}</p>
             ${
               body.shipping === "deliver"
-                ? `<h3>Address:</h3><p>${address.street}<br>${address.suburb}<br>${address.city}<br>${address.postalCode}</p>`
+                ? `<h3>Shipping cost:</h3><p>R60</p><h3>Address:</h3><p>${address.street}<br>${address.suburb}<br>${address.city}<br>${address.postalCode}</p>`
                 : ""
             }
-            <h2>Total: R${total}</h2></div>`,
+			<h2>Total: R${total}</h2></div>`,
     };
 
     try {
