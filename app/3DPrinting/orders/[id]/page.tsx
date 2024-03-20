@@ -136,11 +136,16 @@ export default function OrderPage({ params }: { params: { id: string } }) {
               </div>
             </div>
             <div className="text-right">
-              <h2 className="text-[20px] font-[700]">PAYMENT INFO</h2>
+              <h2 className="text-[20px] font-[700]">CONTACT INFO</h2>
               <div className="text-black">
-                <p>Account Name: Garren Diab</p>
-                <p>Account Number: 62880826684</p>
-                <p>Bank: FNB</p>
+                <p>Garren Diab</p>
+                <p>060 981 1694</p>
+                <a
+                  href="mailto:garrendiab@gmail.com"
+                  className="underline text-print-blue"
+                >
+                  garrendiab@gmail.com
+                </a>
               </div>
             </div>
             <div className="my-[18px]">
@@ -159,6 +164,14 @@ export default function OrderPage({ params }: { params: { id: string } }) {
               ) : (
                 <></>
               )}
+            </div>
+            <div className="text-right my-[18px]">
+              <h2 className="text-[20px] font-[700]">PAYMENT INFO</h2>
+              <div className="text-black">
+                <p>Account Name: Garren Diab</p>
+                <p>Account Number: 62880826684</p>
+                <p>Bank: FNB</p>
+              </div>
             </div>
           </div>
           <div className="w-[100%] border border-print-inv-yellow [&>div]:grid [&>div]:grid-cols-[1fr_152px] [&>div>div]:border [&>div>div]:border-print-inv-yellow [&>div>div]:p-[5px_5px]">
