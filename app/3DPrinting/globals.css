@@ -13,3 +13,9 @@ body {
 h2 {
   font-size: 20px;
 }
+
+@media print {
+  .no-print {
+    display: none;
+  }
+}

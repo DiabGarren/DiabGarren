@@ -55,6 +55,13 @@ const config: Config = {
             DEFAULT: "#028202",
             light: "#4be94b",
           },
+          inv: {
+            green: {
+              DEFAULT: "",
+              dark: "#4b4f0b",
+            },
+            yellow: "#dfce61",
+          },
         },
       },
       borderRadius: {
