@@ -26,6 +26,7 @@ export default function OrderPage({ params }: { params: { id: string } }) {
       },
     ],
     shipping: "collect",
+    shippingCost: null,
     total: 0,
     status: "",
   });
@@ -92,7 +93,11 @@ export default function OrderPage({ params }: { params: { id: string } }) {
           Shipping: {order.shipping[0].toUpperCase()}
           {order.shipping.substring(1)}
         </p>
-        {order.shipping === "deliver" ? <p>Shipping cost: R60</p> : <></>}
+        {order.shipping === "deliver" ? (
+          <p>Shipping cost: R{order.shippingCost || "60"}</p>
+        ) : (
+          <></>
+        )}
         <p></p>
         <p className="text-right mt-[10px]">Total: R{order.total}</p>
 
@@ -191,9 +196,11 @@ export default function OrderPage({ params }: { params: { id: string } }) {
               <div className="text-black">
                 <div>
                   <p className="font-[600]">Shipping</p>
-                  <p className="ml-[50px]">Price: R60</p>
+                  <p className="ml-[50px]">
+                    Price: R{order.shippingCost || "60"}
+                  </p>
                 </div>
-                <div className="text-center">R60</div>
+                <div className="text-center">R{order.shippingCost || "60"}</div>
               </div>
             ) : (
               <></>
