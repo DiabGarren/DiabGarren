@@ -34,7 +34,8 @@ export default function Page() {
                     if (data.status === "success") {
                         setItems(
                             data.data.sort((a: Item, b: Item) => {
-                                if (a.name.localeCompare(b.name) === 1) return 1;
+                                if (a.name.localeCompare(b.name) === 1)
+                                    return 1;
                                 else return -1;
                             })
                         );
@@ -70,27 +71,33 @@ export default function Page() {
     };
 
     return (
-        <PrintBody
-            user={user}
-            cart={null}
-            mainClass={""}>
+        <PrintBody user={user} cart={null} mainClass={""}>
             <div className="relative w-[100%] h-[150px] md:h-[250px] bg-[url('/3DPrinting/hero.jpg')] bg-cover bg-center">
                 <h1
                     className="text-white text-[30px] md:text-[40px] font-[700] text-center pt-[20px] md:pt-[70px]"
-                    style={{ textShadow: "0 0 5px black, 0 0 210px black, 0 0 20px black" }}>
+                    style={{
+                        textShadow:
+                            "0 0 5px black, 0 0 210px black, 0 0 20px black",
+                    }}
+                >
                     Custom 3D Printing
                     <br />
                     by Garren Diab
                 </h1>
             </div>
             <div className="w-[90%] mx-auto my-[50px]">
-                <div className="mx-auto mb-[50px] md:max-w-[400px] md:w-[400px] border-2 border-print-blue rounded-lr pt-[10px]">
-                    <h2 className="font-[600] text-center mb-[10px]">Want a custom print?</h2>
+                <div className="grid grid-cols-1 md:grid-cols-auto-300 justify-center gap-[10px]">
+                    {items?.map((item) => {
+                        return <ItemCard {...item} />;
+                    })}
+                </div>
+                <div className="mx-auto my-[50px] md:max-w-[400px] md:w-[400px] border-2 border-print-blue rounded-lr pt-[10px]">
+                    <h2 className="font-[600] text-center mb-[10px]">
+                        Want a custom print?
+                    </h2>
                     <h2 className="text-center text-print-green">{message}</h2>
                     <form onSubmit={sendMessage}>
-                        <label
-                            htmlFor="email"
-                            className="mx-[10px]">
+                        <label htmlFor="email" className="mx-[10px]">
                             Email
                         </label>
                         <input
@@ -102,21 +109,20 @@ export default function Page() {
                             onChange={(event) => setEmail(event.target.value)}
                             required
                         />
-                        <label
-                            htmlFor="info"
-                            className="mx-[10px]">
+                        <label htmlFor="info" className="mx-[10px]">
                             Item information
                         </label>
                         <textarea
                             name="info"
                             className="form-input mx-[10px] w-[calc(100%-20px)]"
                             placeholder="I'm looking for a cute little dragon"
-                            onChange={(event) => setItemInfo(event.target.value)}>
+                            onChange={(event) =>
+                                setItemInfo(event.target.value)
+                            }
+                        >
                             {itemInfo}
                         </textarea>
-                        <label
-                            htmlFor="size"
-                            className="mx-[10px]">
+                        <label htmlFor="size" className="mx-[10px]">
                             Approx. size (Max 20cm)
                         </label>
                         <input
@@ -127,9 +133,7 @@ export default function Page() {
                             value={size}
                             onChange={(event) => setSize(event.target.value)}
                         />
-                        <label
-                            htmlFor="colour"
-                            className="mx-[10px]">
+                        <label htmlFor="colour" className="mx-[10px]">
                             Colour
                         </label>
                         <input
@@ -142,15 +146,11 @@ export default function Page() {
                         />
                         <button
                             type="submit"
-                            className="w-[100%] text-center text-[20px] text-white bg-print-blue hover:bg-print-blue-light rounded-b-md mt-[10px]">
+                            className="w-[100%] text-center text-[20px] text-white bg-print-blue hover:bg-print-blue-light rounded-b-md mt-[10px]"
+                        >
                             Send message
                         </button>
                     </form>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-auto-300 justify-center gap-[10px]">
-                    {items?.map((item) => {
-                        return <ItemCard {...item} />;
-                    })}
                 </div>
             </div>
         </PrintBody>
