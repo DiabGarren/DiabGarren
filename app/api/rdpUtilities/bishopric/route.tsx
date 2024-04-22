@@ -1,4 +1,4 @@
-import connectDb from "@/lib/rdpUtilities/connectDb";
+import connectDb from "@/lib/connectDb";
 import { createErrorResponse } from "@/lib/utils";
 import Bishopric from "@/models/rdpUtilities/bishopric";
 import { NextResponse } from "next/server";

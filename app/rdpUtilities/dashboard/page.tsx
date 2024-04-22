@@ -58,7 +58,8 @@ export default function Dashboard() {
                     return (
                         <a
                             href={`/rdpUtilities/${button.value}`}
-                            className="button bg-blue hover:text-blue border-blue my-[10px] text-[1.2rem] text-left">
+                            className="rdp-button rdp-button-blue"
+                        >
                             {button.name}
                         </a>
                     );
@@ -69,11 +70,10 @@ export default function Dashboard() {
 
     return (
         <>
-            <Header
-                title={"Dashboard"}
-                user={user}
-            />
-            <main className="w-[770px] mx-auto mt-[25px]">{connected ? page : <Spinner />}</main>
+            <Header title={"Dashboard"} user={user} />
+            <main className="w-[770px] mx-auto mt-[25px]">
+                {connected ? page : <Spinner />}
+            </main>
         </>
     );
 }

@@ -48,6 +48,7 @@ export default function Bishopric() {
                 .then((data) => {
                     if (data.status !== "fail") {
                         setDocs(data.data.reverse());
+                        console.log(data.data);
                     }
                 });
         };
@@ -58,10 +59,7 @@ export default function Bishopric() {
 
     return (
         <>
-            <Header
-                title={"Bishopric"}
-                user={user}
-            />
+            <Header title={"Bishopric"} user={user} />
             <main className="w-[770px] mx-auto mt-[25px]">
                 {connected ? (
                     <DocPage

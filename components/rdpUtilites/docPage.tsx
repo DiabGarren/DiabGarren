@@ -23,30 +23,32 @@ export default function DocPage(props: any) {
         ) {
             newDocs.push(
                 <a
-                    className={`button my-[10px] text-[1.2rem] text-left ${
+                    className={`rdp-button ${
                         currDate.getDate() === date.getDate() &&
                         currDate.getMonth() === date.getMonth() &&
                         currDate.getFullYear() === date.getFullYear()
-                            ? "bg-green border-green hover:text-green"
+                            ? "rdp-button-green"
                             : currDate < date
-                            ? "bg-blue border-blue hover:text-blue"
+                            ? "rdp-button-blue"
                             : ""
-                    }`}>
+                    }`}
+                >
                     {dateStr}
                 </a>
             );
         } else {
             oldDocs.push(
                 <a
-                    className={`button my-[10px] text-[1.2rem] text-left ${
+                    className={`rdp-button ${
                         currDate.getDate() === date.getDate() &&
                         currDate.getMonth() === date.getMonth() &&
                         currDate.getFullYear() === date.getFullYear()
-                            ? "bg-green border-green hover:text-green"
+                            ? "rdp-button-green"
                             : currDate > date
-                            ? "bg-grey border-grey hover:text-grey"
-                            : "bg-blue border-blue hover:text-blue"
-                    }`}>
+                            ? "rdp-button-grey"
+                            : "rdp-button-blue"
+                    }`}
+                >
                     {dateStr}
                 </a>
             );
@@ -54,17 +56,41 @@ export default function DocPage(props: any) {
     });
     return (
         <div className="w-[350px]">
+            <a
+                href="/rdpUtilities/dashboard"
+                className="flex items-center gap-[5px]"
+            >
+                {" "}
+                <svg
+                    className={`inline w-[10px] h-[20px] rotate-180`}
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="41"
+                    height="52"
+                    viewBox="0 0 41 52"
+                    fill="none"
+                >
+                    <path
+                        d="M7.7735 1.18233L38.7596 21.8397C41.7283 23.8188 41.7283 28.1811 38.7596 30.1602L7.7735 50.8176C4.45073 53.0328 0 50.6509 0 46.6574L0 5.34258C0 1.34911 4.45073 -1.03285 7.7735 1.18233Z"
+                        fill="black"
+                    />
+                </svg>
+                Back
+            </a>
+            <a className="rdp-button rdp-button-blue">Create Document</a>
             {newDocs}{" "}
             <Popup
                 trigger={
-                    <button>
+                    <button className="flex items-center gap-[5px]">
                         <svg
-                            className={`inline w-[10px] h-[20px] ${props.past ? "rotate-90" : ""}`}
+                            className={`inline w-[10px] h-[20px] ${
+                                props.past ? "rotate-90" : ""
+                            }`}
                             xmlns="http://www.w3.org/2000/svg"
                             width="41"
                             height="52"
                             viewBox="0 0 41 52"
-                            fill="none">
+                            fill="none"
+                        >
                             <path
                                 d="M7.7735 1.18233L38.7596 21.8397C41.7283 23.8188 41.7283 28.1811 38.7596 30.1602L7.7735 50.8176C4.45073 53.0328 0 50.6509 0 46.6574L0 5.34258C0 1.34911 4.45073 -1.03285 7.7735 1.18233Z"
                                 fill="black"
@@ -77,7 +103,8 @@ export default function DocPage(props: any) {
                 onOpen={() => props.setPast(true)}
                 onClose={() => props.setPast(false)}
                 closeOnDocumentClick={false}
-                closeOnEscape={true}>
+                closeOnEscape={true}
+            >
                 <div className="w-[350px]">{oldDocs}</div>
             </Popup>
         </div>

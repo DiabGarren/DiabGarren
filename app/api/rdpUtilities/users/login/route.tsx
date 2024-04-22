@@ -1,4 +1,4 @@
-import connectDb from "@/lib/rdpUtilities/connectDb";
+import connectDb from "@/lib/connectDb";
 import { createErrorResponse } from "@/lib/utils";
 import User from "@/models/rdpUtilities/user";
 import { NextResponse } from "next/server";
@@ -12,11 +12,17 @@ export async function POST(request: Request) {
 
         let user = null;
 
-        if (body.email !== "") user = await User.findOne({ email: body.email });
-        else if (body.username !== "") user = await User.findOne({ username: body.username });
-        else return createErrorResponse("Username/Email does not exist", 500);
+        const users = await User.find({});
 
-        if (body.password === "") return createErrorResponse("Please enter a password", 500);
+        if (body.email !== "") user = await User.findOne({ email: body.email });
+        else if (body.username !== "")
+            user = await User.findOne({ username: body.username });
+
+        if (!user)
+            return createErrorResponse("Username/Email does not exist", 500);
+
+        if (body.password === "")
+            return createErrorResponse("Please enter a password", 500);
 
         const pass = await compare(body.password, user.password);
         if (!pass) return createErrorResponse("Password is incorrect", 500);

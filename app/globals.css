@@ -14,7 +14,8 @@ h2 {
     font-weight: bold;
 }
 
-a.button {
+a.button,
+button.button {
     display: block;
     /* background-color: var(--primary); */
     color: white;
@@ -29,7 +30,8 @@ a.button {
     transition: all 0.2s;
 }
 
-a.button:hover {
+a.button:hover,
+button.button {
     background-color: white;
     /* color: var(--primary); */
 }
