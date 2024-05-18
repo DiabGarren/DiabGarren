@@ -210,8 +210,6 @@ export default function ItemPage({ params }: { params: { id: string } }) {
                         );
                     })}
                 </div>
-                <h2>Price:</h2>
-                <p>{choice ? `R${choice.price}` : <br />}</p>
                 <h2>Colour:</h2>
                 <div className="flex flex-wrap gap-[10px]">
                     {item?.colours.map((colour) => {
@@ -292,13 +290,27 @@ export default function ItemPage({ params }: { params: { id: string } }) {
                 )}
                 {choice.size != "" ? (
                     <div>
-                        <h2>Printing time:</h2>
-                        <p>
-                            {choice.printing.time.hours}h{" "}
-                            {choice.printing.time.minutes}m
+                        <p className="my-[5px]">
+                            Printing time:{" "}
+                            <span className="font-[500]">
+                                {choice.printing.time.hours}h{" "}
+                                {choice.printing.time.minutes}m
+                            </span>
                         </p>
-                        <h2>Weight:</h2>
-                        <p>{choice.printing.weight}g</p>
+
+                        <p className="my-[5px]">
+                            Weight:{" "}
+                            <span className="font-[500]">
+                                {choice.printing.weight}g
+                            </span>
+                        </p>
+
+                        <p className="mt-[20px]">
+                            Price:{" "}
+                            <span className="font-[600] text-[20px]">
+                                {choice ? `R${choice.price}` : <br />}
+                            </span>
+                        </p>
                     </div>
                 ) : (
                     <></>
@@ -309,7 +321,7 @@ export default function ItemPage({ params }: { params: { id: string } }) {
                         notify?.status === "success"
                             ? "text-print-green"
                             : "text-print-red"
-                    } text-center mt-[30px] w-[300px]`}
+                    } text-center mt-[5px] w-[300px]`}
                 >
                     {notify?.message}
                 </h2>
