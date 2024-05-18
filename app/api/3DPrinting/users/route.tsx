@@ -1,4 +1,4 @@
-import connectDb from "@/lib/3DPrinting/connectDb";
+import connectDb from "@/lib/connectDb";
 import { createErrorResponse } from "@/lib/utils";
 import User from "@/models/3DPrinting/user";
 import { NextResponse } from "next/server";
