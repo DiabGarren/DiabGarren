@@ -1,9 +1,12 @@
-import connectDb from "@/lib/3DPrinting/connectDb";
+import connectDb from "@/lib/connectDb";
 import { createErrorResponse } from "@/lib/utils";
 import Order from "@/models/3DPrinting/order";
 import { NextResponse } from "next/server";
 
-export async function GET(request: Request, { params }: { params: { id: string } }) {
+export async function GET(
+    request: Request,
+    { params }: { params: { id: string } }
+) {
     try {
         await connectDb();
 
