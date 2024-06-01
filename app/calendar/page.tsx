@@ -1,12 +1,19 @@
+"use client"
+import Popup from "reactjs-popup";
+
 /* eslint-disable react/jsx-key */
 export default function Calendar() {
     let today = new Date();
-    let amtime = [12];
-    let pmtime = [12];
+    let amtime = [{ time: 12, clock: "am" }];
 
+    let eventTypes = ["Study", "Meeting", "Meal", "Exercise", "Other"]
+
+    for (let i = 1; i <= 12; i++) {
+        if (i == 12) amtime.push({ time: i, clock: "pm" });
+        else amtime.push({ time: i, clock: "am" });
+    }
     for (let i = 1; i <= 11; i++) {
-        amtime.push(i);
-        pmtime.push(i);
+        amtime.push({ time: i, clock: "pm" });
     }
 
     return (
@@ -20,14 +27,17 @@ export default function Calendar() {
             <div className="max-h-[650px] overflow-auto">
                 {amtime.map((time) => {
                     return (<div className="flex my-[16px]">
-                        <p className="w-[60px]">{time}am</p>
-                        <button className="border-b-4 w-[100%] h-[32px]"></button>
-                    </div>);
-                })}
-                {pmtime.map((time) => {
-                    return (<div className="flex my-[16px]">
-                        <p className="w-[60px]">{time}pm</p>
-                        <button className="border-b-4 w-[100%] h-[32px]"></button>
+                        <p className="w-[60px]">{time.time}{time.clock}</p>
+
+                        <Popup
+                            trigger={<button className="border-b-4 w-[100%] h-[32px]"></button>}
+                            position={"bottom center"}>
+                            <div className="bg-white p-[15px]">
+                                {eventTypes.map((event) => {
+                                    return <a  href="/calendar/newEvent" className="block text-[24px] px-[5px] rounded hover:bg-blue hover:text-white">{event}</a>
+                                })}
+                            </div>
+                        </Popup>
                     </div>);
                 })}
             </div>
