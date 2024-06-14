@@ -24,6 +24,7 @@ export default function CreateOrder() {
         size: string | undefined;
         colour: string | undefined;
         price: number | undefined;
+        qty: number | undefined;
     }>();
 
     useEffect(() => {
@@ -101,6 +102,7 @@ export default function CreateOrder() {
                                 size: undefined,
                                 colour: undefined,
                                 price: undefined,
+                                qty: 0,
                             });
                         } else {
                             setChoice({
@@ -117,6 +119,7 @@ export default function CreateOrder() {
                                 size: undefined,
                                 colour: undefined,
                                 price: undefined,
+                                qty: 0,
                             });
                         }
                     }}
@@ -176,9 +179,12 @@ export default function CreateOrder() {
                                                         id={`${option?.size}-${index}`}
                                                         onClick={() =>
                                                             setChoice({
-                                                                ...choice,
+                                                                _id: choice?._id,
+                                                                name: choice?.name,
+                                                                colour: choice?.colour,
                                                                 size: option?.size,
                                                                 price: option?.price,
+                                                                qty: choice?.qty,
                                                             })
                                                         }
                                                         checked={
@@ -217,8 +223,12 @@ export default function CreateOrder() {
                                         className="form-input"
                                         onChange={(event) =>
                                             setChoice({
-                                                ...choice,
+                                                _id: choice?._id,
+                                                name: choice?.name,
+                                                colour: choice?.colour,
+                                                qty: choice?.qty,
                                                 size: event.target.value,
+                                                price: choice?.price,
                                             })
                                         }
                                     />
@@ -240,8 +250,12 @@ export default function CreateOrder() {
                                                       id={colour?.name}
                                                       onClick={() => {
                                                           setChoice({
-                                                              ...choice,
+                                                              _id: choice?._id,
+                                                              name: choice?.name,
                                                               colour: colour?.name,
+                                                              qty: choice?.qty,
+                                                              size: choice?.size,
+                                                              price: choice?.price,
                                                           });
                                                       }}
                                                       checked={
@@ -270,8 +284,12 @@ export default function CreateOrder() {
                                                       id={colour?.name}
                                                       onClick={() => {
                                                           setChoice({
-                                                              ...choice,
+                                                              _id: choice?._id,
+                                                              name: choice?.name,
                                                               colour: colour?.name,
+                                                              qty: choice?.qty,
+                                                              size: choice?.size,
+                                                              price: choice?.price,
                                                           });
                                                       }}
                                                       checked={
@@ -300,7 +318,11 @@ export default function CreateOrder() {
                                     className="form-input"
                                     onChange={(event) =>
                                         setChoice({
-                                            ...choice,
+                                            _id: choice?._id,
+                                            name: choice?.name,
+                                            colour: choice?.colour,
+                                            qty: choice?.qty,
+                                            size: choice?.size,
                                             price: parseInt(event.target.value),
                                         })
                                     }
@@ -314,6 +336,24 @@ export default function CreateOrder() {
                                     )}
                                 </>
                             )}
+                        </div>
+                        <div className="my-[15px]">
+                            <h2>Qty</h2>
+                            <input
+                                type="number"
+                                className="form-input"
+                                value={choice?.qty}
+                                onChange={(event) => {
+                                    setChoice({
+                                        _id: choice?._id,
+                                        name: choice?.name,
+                                        colour: choice?.colour,
+                                        size: choice?.size,
+                                        price: choice?.price,
+                                        qty: parseInt(event.target.value),
+                                    });
+                                }}
+                            />
                         </div>
                     </>
                 ) : (
