@@ -1,7 +1,7 @@
 export interface Item {
     _id: any;
     name: string;
-    colours: [{ name: string; value: string } | undefined] | undefined;
+    colours: [{ name: string; value: string } | undefined];
     options:
         | [
               | {
@@ -13,8 +13,7 @@ export interface Item {
                     };
                 }
               | undefined
-          ]
-        | undefined;
+          ];
     bases: [string] | undefined;
     images: [string];
 }

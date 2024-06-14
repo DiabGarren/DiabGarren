@@ -178,23 +178,23 @@ export default function ItemPage({ params }: { params: { id: string } }) {
                                     className="appearance-none"
                                     type="radio"
                                     name="size"
-                                    id={`${option.size}-${index}`}
+                                    id={`${option?.size}-${index}`}
                                     onClick={() => {
                                         setChoice({
-                                            size: option.size,
-                                            price: option.price,
+                                            size: option!.size,
+                                            price: option!.price,
                                             colour: choice.colour,
                                             base: choice.base,
-                                            printing: option.printing,
+                                            printing: option!.printing,
                                         });
                                     }}
-                                    checked={option.size === choice.size}
+                                    checked={option?.size === choice.size}
                                 />
                                 <label
-                                    htmlFor={`${option.size}-${index}`}
+                                    htmlFor={`${option?.size}-${index}`}
                                     className="cursor-pointer"
                                 >
-                                    {option.size.split("x").map((x, index) => {
+                                    {option?.size.split("x").map((x, index) => {
                                         return `${x.substring(
                                             0,
                                             x.length - 1
@@ -219,21 +219,21 @@ export default function ItemPage({ params }: { params: { id: string } }) {
                                     className="appearance-none"
                                     type="radio"
                                     name="colour"
-                                    id={colour.name}
+                                    id={colour?.name}
                                     onClick={() => {
                                         setChoice({
                                             size: choice.size,
                                             price: choice.price,
-                                            colour: colour.name,
+                                            colour: colour!.name,
                                             base: choice.base,
                                             printing: choice.printing,
                                         });
                                     }}
-                                    checked={colour.name === choice.colour}
+                                    checked={colour?.name === choice.colour}
                                 />
                                 <label
-                                    htmlFor={colour.name}
-                                    style={{ backgroundColor: colour.value }}
+                                    htmlFor={colour?.name}
+                                    style={{ backgroundColor: colour?.value }}
                                     className={`absolute block w-[46px] h-[46px] top-[2px] left-[2px] rounded-[50%] cursor-pointer`}
                                 ></label>
                             </div>
