@@ -5,7 +5,7 @@ export default function PrintBody({
     children,
     user,
     cart = null,
-    mainClass = "my-[50px] mx-auto w-[90%] md:w-[85%] xl:w-[900px] md:grid md:grid-cols-[2fr_1fr]",
+    mainClass = "my-[50px] mx-auto w-[90%] md:w-[85%] xl:w-[900px]",
 }: {
     children: React.ReactNode;
     user: any;
