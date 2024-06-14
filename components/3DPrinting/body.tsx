@@ -4,8 +4,8 @@ import Header from "./header";
 export default function PrintBody({
     children,
     user,
-    cart,
-    mainClass,
+    cart = null,
+    mainClass = "my-[50px] mx-auto w-[90%] md:w-[85%] xl:w-[900px] md:grid md:grid-cols-[2fr_1fr]",
 }: {
     children: React.ReactNode;
     user: any;
@@ -14,10 +14,7 @@ export default function PrintBody({
 }) {
     return (
         <>
-            <Header
-                user={user ? user : null}
-                cart={cart ? cart : null}
-            />
+            <Header user={user ? user : null} cart={cart ? cart : null} />
             <main className={mainClass}>{children}</main>
             <Footer />
         </>

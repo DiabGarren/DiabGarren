@@ -84,6 +84,9 @@ export default function Header(props: any) {
                         {props.user.level === 2 ? (
                             <>
                                 <a href="/3DPrinting/allOrders/">All Orders</a>
+                                <a href="/3DPrinting/createOrder/">
+                                    Create Order
+                                </a>
                                 <a href="/3DPrinting/costCalculator">
                                     Cost Calculator
                                 </a>
