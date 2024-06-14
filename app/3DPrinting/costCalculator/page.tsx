@@ -158,7 +158,7 @@ export default function CostCalculator() {
                         </div>
                     </div>
                     <div className="col-[1/3]">
-                        <label>Markup</label>
+                        <label>Filament Markup</label>
                         <input
                             type="range"
                             min="1"
@@ -246,7 +246,7 @@ export default function CostCalculator() {
                     </div>
                 </div>
                 <div>
-                    <h2>VAT</h2>
+                    <h2>Markup</h2>
                     <input
                         type="range"
                         min="1"
