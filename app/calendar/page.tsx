@@ -17,7 +17,7 @@ export default function Calendar() {
     }
 
     return (
-        <main className="max-w-[900px] mx-auto my-[50px] px-[20px]">
+        <main className="max-w-[900px] mx-auto my-[50px_100px] px-[20px]">
             <h1 className="text-center text-[34px] font-[800]">Daily Schedule</h1>
             <p className="text-center text-[22px] font-[700]">{today.toLocaleString("default", { weekday: "short" })},{" "}
                 {today.getDate()}{" "}
@@ -31,10 +31,10 @@ export default function Calendar() {
 
                         <Popup
                             trigger={<button className="border-b-4 w-[100%] h-[32px]"></button>}
-                            position={"bottom center"}>
-                            <div className="bg-white p-[15px]">
+                            position={"center center"}>
+                            <div className="bg-white w-[250px] p-[15px]">
                                 {eventTypes.map((event) => {
-                                    return <a  href="/calendar/newEvent" className="block text-[24px] px-[5px] rounded hover:bg-blue hover:text-white">{event}</a>
+                                    return <a  href="/calendar/newEvent" className="block text-[24px] text-center px-[5px] rounded hover:bg-blue hover:text-white">{event}</a>
                                 })}
                             </div>
                         </Popup>
