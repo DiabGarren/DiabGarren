@@ -48,9 +48,9 @@ export default function DocsList(props: any) {
                             ? "rdp-button-grey"
                             : "rdp-button-blue"
                     }`}
-                    href={`${
-                        props.title
-                    }/${currDate.getFullYear()}-${currDate.getMonth()}-${currDate.getDate()}`}
+                    href={`${props.title}/${currDate.toLocaleDateString(
+                        "en-CA"
+                    )}`}
                 >
                     {dateStr}
                 </a>

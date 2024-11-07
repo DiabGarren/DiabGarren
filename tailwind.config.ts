@@ -87,6 +87,9 @@ const config: Config = {
                 "2xl": "2560px",
             },
         },
+        fontFamily: {
+            doc: "Times New Roman",
+        },
     },
     plugins: [
         plugin(function ({
