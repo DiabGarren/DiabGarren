@@ -1,6 +1,6 @@
 import Popup from "reactjs-popup";
 
-export default function DocPage(props: any) {
+export default function DocsList(props: any) {
     const currDate = new Date();
     const newDocs: any[] = [];
     const oldDocs: any[] = [];
@@ -48,6 +48,9 @@ export default function DocPage(props: any) {
                             ? "rdp-button-grey"
                             : "rdp-button-blue"
                     }`}
+                    href={`${
+                        props.title
+                    }/${currDate.getFullYear()}-${currDate.getMonth()}-${currDate.getDate()}`}
                 >
                     {dateStr}
                 </a>

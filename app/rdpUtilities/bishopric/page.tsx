@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-key */
 "use client";
-import DocPage from "@/components/rdpUtilites/docPage";
+import DocsList from "@/components/rdpUtilites/docsList";
 import Header from "@/components/rdpUtilites/header";
 import Spinner from "@/components/rdpUtilites/spinner";
 import { useEffect, useState } from "react";
@@ -48,7 +48,6 @@ export default function Bishopric() {
                 .then((data) => {
                     if (data.status !== "fail") {
                         setDocs(data.data.reverse());
-                        console.log(data.data);
                     }
                 });
         };
@@ -62,7 +61,7 @@ export default function Bishopric() {
             <Header title={"Bishopric"} user={user} />
             <main className="w-[770px] mx-auto mt-[25px]">
                 {connected ? (
-                    <DocPage
+                    <DocsList
                         title={"bishopric"}
                         docs={docs}
                         past={past}
