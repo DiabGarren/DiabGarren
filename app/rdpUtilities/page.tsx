@@ -10,22 +10,26 @@ export default function Login() {
     const [password, setPassword] = useState("");
     const [connected, setConnected] = useState(false);
 
-    const logIn = async () => {
+    const logIn = async (event: any) => {
+        event.preventDefault();
         let email = "";
         if (username.includes("@")) {
             email = username;
             setUsername("");
         }
 
-        const res = await fetch(process.env.NEXT_PUBLIC_API_URL + "/rdpUtilities/users/login", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                username: username,
-                email: email,
-                password: password,
-            }),
-        });
+        const res = await fetch(
+            process.env.NEXT_PUBLIC_API_URL + "/rdpUtilities/users/login",
+            {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    username: username,
+                    email: email,
+                    password: password,
+                }),
+            }
+        );
         const data = await res.json();
 
         if (data.status === "error") setError(data.message);
@@ -47,11 +51,13 @@ export default function Login() {
     }, []);
 
     const page = (
-        <>
+        <form onSubmit={logIn}>
             <h3 className="text-warning">{error}</h3>
             <h3>Username/Email</h3>
             <input
-                onChange={(event) => setUsername(event.target.value.toLowerCase())}
+                onChange={(event) =>
+                    setUsername(event.target.value.toLowerCase())
+                }
                 type="text"
             />
             <h3 className="mt-[10px]">Password</h3>
@@ -60,18 +66,20 @@ export default function Login() {
                 type="password"
             />
             <a>Forgot password?</a>
-            <button
+            <input
                 className="w-[100%] bg-green hover:bg-green-light text-white hover:text-green border-green py-[5px] rounded mt-[10px]"
-                onClick={logIn}>
-                Login
-            </button>{" "}
-        </>
+                type="submit"
+                value="Login"
+            />
+        </form>
     );
 
     return (
         <>
             <Header title={"Login"} />
-            <main className="w-[350px] mx-auto mt-[25px]">{connected ? page : <Spinner />}</main>
+            <main className="w-[350px] mx-auto mt-[25px]">
+                {connected ? page : <Spinner />}
+            </main>
         </>
     );
 }
