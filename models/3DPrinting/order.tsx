@@ -10,6 +10,7 @@ const OrderSchema = new Schema(
                 name: String,
                 size: String,
                 colour: String,
+                multiColour: Boolean,
                 base: String,
                 image: String,
                 price: Number,

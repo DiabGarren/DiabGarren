@@ -2,6 +2,7 @@ export interface Item {
     _id: any;
     name: string;
     colours: [{ name: string; value: string } | undefined];
+    multiColour: boolean | undefined;
     options:
         | [
               | {

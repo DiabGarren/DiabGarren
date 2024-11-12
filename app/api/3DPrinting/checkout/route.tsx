@@ -57,6 +57,7 @@ export async function POST(request: Request) {
                 name: item.name,
                 size: item.size,
                 colour: item.colour,
+                multiColour: item.multiColour,
                 base: item.base,
                 image: item.image,
                 price: item.price,

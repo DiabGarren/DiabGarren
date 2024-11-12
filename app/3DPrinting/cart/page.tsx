@@ -15,6 +15,7 @@ export default function Cart() {
             size: "",
             price: 0,
             colour: "",
+            multiColour: false,
             image: "",
             qty: 0,
         },
@@ -47,16 +48,12 @@ export default function Cart() {
         <PrintBody
             user={user}
             cart={null}
-            mainClass={"mx-auto my-[50px] w-[90%] md:w-[600px]"}>
+            mainClass={"mx-auto my-[50px] w-[90%] md:w-[600px]"}
+        >
             <Back href="/" />
             {cart.length > 0 ? (
                 cart.map((item: any) => {
-                    return (
-                        <CartItem
-                            item={item}
-                            cart={cart}
-                        />
-                    );
+                    return <CartItem item={item} cart={cart} />;
                 })
             ) : (
                 <h2 className="text-center">Your cart is empty</h2>
@@ -68,7 +65,8 @@ export default function Cart() {
             {cart.length > 0 ? (
                 <a
                     href="/3DPrinting/checkout"
-                    className="block bg-print-blue hover:bg-print-blue-light text-white rounded w-[288px] md:w-[70%] md:w-[350px] h-[35px] py-[5px] mx-auto mt-[15px] text-center cursor-pointer">
+                    className="block bg-print-blue hover:bg-print-blue-light text-white rounded w-[288px] md:w-[70%] md:w-[350px] h-[35px] py-[5px] mx-auto mt-[15px] text-center cursor-pointer"
+                >
                     Checkout
                 </a>
             ) : (

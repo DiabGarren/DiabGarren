@@ -14,12 +14,15 @@ export default function ItemCard(props: any) {
             <div className="flex flex-col p-[10px] bg-print-blue-light-1 min-h-[110px] justify-center">
                 <h2 className="text-[1.2rem] mb-[10px]">{props.name}</h2>
                 <p>
-                    {props.options.length > 1 ? "From" : ""} R{props.options[0].price}
+                    {props.options.length > 1 ? "From" : ""} R
+                    {props.options[0].price}
                 </p>
+                <p>{props.multiColour ? "Multilcolour Available" : ""}</p>
             </div>
             <a
                 href={`/3DPrinting/item/${props._id}`}
-                className="bg-print-blue rounded-b-[12px] text-center text-white text-[1.2rem] py-[2px] hover:bg-print-blue-light h-[33px]">
+                className="bg-print-blue rounded-b-[12px] text-center text-white text-[1.2rem] py-[2px] hover:bg-print-blue-light h-[33px]"
+            >
                 View Item
             </a>
         </div>

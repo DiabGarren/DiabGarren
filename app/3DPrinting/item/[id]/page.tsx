@@ -13,6 +13,7 @@ export default function ItemPage({ params }: { params: { id: string } }) {
         _id: "",
         name: "",
         colours: [{ name: "", value: "" }],
+        multiColour: false,
         options: [
             {
                 size: "",
@@ -99,6 +100,7 @@ export default function ItemPage({ params }: { params: { id: string } }) {
                     size: choice.size,
                     price: choice.price,
                     colour: choice.colour,
+                    multiColour: item?.multiColour || false,
                     base: choice.base,
                     image: item?.images[0],
                 }),
@@ -210,7 +212,20 @@ export default function ItemPage({ params }: { params: { id: string } }) {
                         );
                     })}
                 </div>
-                <h2>Colour:</h2>
+                <>
+                    {item?.multiColour ? (
+                        <>
+                            <h2>Main Colour:</h2>
+
+                            <p className="text-print-red">
+                                Extra colours will be finalised after order is
+                                placed.
+                            </p>
+                        </>
+                    ) : (
+                        <h2>Colour:</h2>
+                    )}
+                </>
                 <div className="flex flex-wrap gap-[10px]">
                     {item?.colours.map((colour) => {
                         return (
