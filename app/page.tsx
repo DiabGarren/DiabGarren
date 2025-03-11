@@ -24,9 +24,9 @@ export default function Home() {
             </a>
             <a
                 className="button bg-blue hover:text-blue text-center"
-                href="/calendar"
+                href="/BookOfMormon"
             >
-                Calendar
+                Book of Mormon
             </a>
         </main>
     );
