@@ -10,8 +10,16 @@ export default function ChapterPage({
 }) {
     const [chapterEng, setChapterEng] = useState([{ verse: 0, text: "" }]);
     const [chapterEsp, setChapterEsp] = useState([{ verse: 0, text: "" }]);
-    const [bookEng, setBookEng] = useState("");
-    const [bookEsp, setBookEsp] = useState("");
+    const [bookEng, setBookEng] = useState({
+        name: "",
+        chapterName: "",
+        intro: "",
+    });
+    const [bookEsp, setBookEsp] = useState({
+        name: "",
+        chapterName: "",
+        intro: "",
+    });
 
     useEffect(() => {
         const getChapter = async () => {
@@ -25,10 +33,18 @@ export default function ChapterPage({
                         data.data.forEach((data: any, index: number) => {
                             if (data.lang === "eng") {
                                 setChapterEng(data.contents);
-                                setBookEng(data.name);
+                                setBookEng({
+                                    name: data.name,
+                                    chapterName: data.chapterName,
+                                    intro: data.intro,
+                                });
                             } else {
                                 setChapterEsp(data.contents);
-                                setBookEsp(data.name);
+                                setBookEsp({
+                                    name: data.name,
+                                    chapterName: data.chapterName,
+                                    intro: data.intro,
+                                });
                             }
                         });
                     }
@@ -38,28 +54,49 @@ export default function ChapterPage({
     }, []);
 
     return (
-        <main className="max-w-[750px] mx-auto px-[10px]">
+        <main className="px-[10px] mt-[20px] max-w-[820px] mx-auto">
             <a href={`/BookOfMormon/${params.id}`}>Back</a>
             {chapterEng.length <= 1 ? (
                 <></>
             ) : (
                 <>
-                    <div className="flex [&>h1]:w-[50%] [&>h1]:py-[10px] [&>h1]:px-[15px] text-[35px] text-center">
-                        <h1 className="border-r-[2px]">{bookEng}</h1>
-                        <h1 className="border-l-[2px]">{bookEsp}</h1>
+                    <div className="overflow-x-auto">
+                        <div className="bom-verse-box [&_h1]:my-[10px] [&_h1]:text-[35px] [&_h3]:my-[10px] [&_h3]:text-[14px] [&_h2]:font-[400] text-center">
+                            <div className="border-r-[2px]">
+                                <h1>{bookEng.name}</h1>
+                                <h2>
+                                    {bookEng.chapterName} {params.chapter}
+                                </h2>
+                                <h3>
+                                    <i>{bookEng.intro}</i>
+                                </h3>
+                            </div>
+                            <div className="border-l-[2px]">
+                                <h1>{bookEsp.name}</h1>
+                                <h2>
+                                    {bookEsp.chapterName} {params.chapter}
+                                </h2>
+                                <h3>
+                                    <i>{bookEsp.intro}</i>
+                                </h3>
+                            </div>
+                        </div>
                     </div>
+
                     {chapterEng.map(
                         (value: { verse: number; text: string }, index) => {
                             return (
-                                <div className="flex [&>p]:w-[50%] [&>p]:py-[10px] [&>p]:px-[15px]">
-                                    <p className="border-r-[2px]">
-                                        <span className="text-[18px]">{`${value.verse}`}</span>{" "}
-                                        {value.text}
-                                    </p>
-                                    <p className="border-l-[2px]">
-                                        <span className="text-[18px]">{`${chapterEsp[index].verse}`}</span>{" "}
-                                        {chapterEsp[index].text}
-                                    </p>
+                                <div className="overflow-x-auto">
+                                    <div className="bom-verse-box">
+                                        <div className="border-r-[2px]">
+                                            <span className="text-[18px]">{`${value.verse}`}</span>{" "}
+                                            {value.text}
+                                        </div>
+                                        <div className="border-l-[2px]">
+                                            <span className="text-[18px]">{`${chapterEsp[index].verse}`}</span>{" "}
+                                            {chapterEsp[index].text}
+                                        </div>
+                                    </div>
                                 </div>
                             );
                         }

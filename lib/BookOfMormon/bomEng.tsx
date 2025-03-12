@@ -3,9 +3,11 @@ export interface bomEng {
     lang: string;
     id: string;
     name: string;
+    chapterName: string;
     contents: [
         {
             chapter: number;
+            intro: string;
             verses: [{ verse: number; text: string }];
         }
     ];

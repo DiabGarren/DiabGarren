@@ -22,12 +22,15 @@ export async function GET(
         bookEng.contents.forEach(
             (contents: {
                 chapter: number;
+                intro: string;
                 verses: [{ verse: number; text: string }];
             }) => {
                 if (contents.chapter == params.chapter) {
                     contentEng = {
                         lang: bookEng.lang,
                         name: bookEng.name,
+                        chapterName: bookEng.chapterName,
+                        intro: contents.intro,
                         contents: contents.verses,
                     };
                 }
@@ -37,12 +40,15 @@ export async function GET(
         bookEsp.contents.forEach(
             (contents: {
                 chapter: number;
+                intro: string;
                 verses: [{ verse: number; text: string }];
             }) => {
                 if (contents.chapter == params.chapter) {
                     contentEsp = {
                         lang: bookEsp.lang,
                         name: bookEsp.name,
+                        chapterName: bookEsp.chapterName,
+                        intro: contents.intro,
                         contents: contents.verses,
                     };
                 }

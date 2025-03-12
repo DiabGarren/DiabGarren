@@ -19,17 +19,26 @@ export default function Page() {
         getBooks();
     }, []);
     return (
-        <div>
-            {books.map(
-                (book: {
-                    id: string;
-                    lang: string;
-                    name: string;
-                    chapters: number;
-                }) => {
-                    return <a href={`BookOfMormon/${book.id}`}>{book.name}</a>;
-                }
-            )}
-        </div>
+        <main className="px-[10px] mt-[20px] max-w-[820px] mx-auto">
+            <div>
+                {books.map(
+                    (book: {
+                        id: string;
+                        lang: string;
+                        name: string;
+                        chapters: number;
+                    }) => {
+                        return (
+                            <a
+                                className="block w-[120px] text-center border-[2px] rounded-[15px] p-[10px]"
+                                href={`BookOfMormon/${book.id}`}
+                            >
+                                {book.name}
+                            </a>
+                        );
+                    }
+                )}
+            </div>
+        </main>
     );
 }

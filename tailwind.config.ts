@@ -174,6 +174,28 @@ const config: Config = {
                     backgroundColor: theme("colors.white"),
                     color: theme("colors.grey.DEFAULT"),
                 },
+                ".bom-verse-box": {
+                    display: "flex",
+                    marginInline: "auto",
+                    width: "600px",
+                    "@media (min-width: 375px)": {
+                        width: "700px",
+                    },
+                    "@media (min-width: 425px)": {
+                        width: "750px",
+                    },
+                    "@media (min-width: 768px)": {
+                        width: "700px",
+                    },
+                    "@media (min-width: 1024px)": {
+                        width: "800px",
+                    },
+                    "&>div": {
+                        width: "50%",
+                        paddingInline: "15px",
+                        paddingBlock: "5px",
+                    },
+                },
             });
         }),
         nextui(),

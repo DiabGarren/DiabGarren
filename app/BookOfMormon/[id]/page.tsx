@@ -37,17 +37,20 @@ export default function Page({ params }: { params: { id: string } }) {
         getChapters();
     }, []);
     return (
-        <main className="max-w-[750px] mx-auto px-[10px] flex flex-wrap gap-[15px] mt-[50px] justify-center">
-            {[...Array(book.chapters)].map((num, index) => {
-                return (
-                    <a
-                        className="block w-[50px] h-[50px] border-[2px] border-black text-center align-center py-[10px] rounded-[15px]"
-                        href={`/BookOfMormon/${book.id}/${index + 1}`}
-                    >
-                        {index + 1}
-                    </a>
-                );
-            })}
+        <main className="px-[10px] mt-[20px] max-w-[820px] mx-auto">
+            <a href={`/BookOfMormon/`}>Back</a>
+            <div className="px-[10px] flex flex-wrap gap-[15px] mt-[50px] justify-center">
+                {[...Array(book.chapters)].map((num, index) => {
+                    return (
+                        <a
+                            className="block w-[50px] h-[50px] border-[2px] text-center align-center py-[10px] rounded-[15px]"
+                            href={`/BookOfMormon/${book.id}/${index + 1}`}
+                        >
+                            {index + 1}
+                        </a>
+                    );
+                })}
+            </div>
         </main>
     );
 }

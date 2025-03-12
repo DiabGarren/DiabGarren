@@ -5,9 +5,11 @@ const bomEspSchema = new Schema(
         lang: String,
         id: String,
         name: String,
+        chapterName: String,
         contents: [
             {
                 chapter: Number,
+                intro: String,
                 verses: [{ verse: Number, text: String }],
             },
         ],
