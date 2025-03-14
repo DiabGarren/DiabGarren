@@ -30,7 +30,7 @@ export default function Page() {
                     }) => {
                         return (
                             <a
-                                className="block w-[120px] text-center border-[2px] rounded-[15px] p-[10px]"
+                                className="block w-[120px] text-center border-[3px] border-[#333333] rounded-[15px] p-[10px] text-[20px]"
                                 href={`BookOfMormon/${book.id}`}
                             >
                                 {book.name}

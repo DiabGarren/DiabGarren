@@ -209,7 +209,7 @@ const config: Config = {
                     borderRadius: "50%",
                     width: "40px",
                     height: "40px",
-                    backgroundColor: "#0987e0",
+                    backgroundColor: "#384ba1",
                     color: "white",
                     fontSize: "20px",
                     fontWeight: "900",
