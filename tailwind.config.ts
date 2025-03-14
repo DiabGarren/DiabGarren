@@ -174,6 +174,9 @@ const config: Config = {
                     backgroundColor: theme("colors.white"),
                     color: theme("colors.grey.DEFAULT"),
                 },
+                ".title-box, .verse-box": {
+                    overflow: "auto",
+                },
                 ".bom-verse-box": {
                     display: "flex",
                     marginInline: "auto",
@@ -195,6 +198,27 @@ const config: Config = {
                         paddingInline: "15px",
                         paddingBlock: "5px",
                     },
+                },
+                ".bom-chap-nav": {
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    position: "fixed",
+                    bottom: "50px",
+                    border: "2px solid black",
+                    borderRadius: "50%",
+                    width: "40px",
+                    height: "40px",
+                    backgroundColor: "#0987e0",
+                    color: "white",
+                    fontSize: "20px",
+                    fontWeight: "900",
+                },
+                ".bom-nav-back": {
+                    left: "12%",
+                },
+                ".bom-nav-next": {
+                    right: "12%",
                 },
             });
         }),

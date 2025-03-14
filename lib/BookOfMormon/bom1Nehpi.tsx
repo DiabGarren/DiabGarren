@@ -1,4 +1,4 @@
-export interface bomEng {
+export interface bom1Nephi {
     _id: any;
     lang: string;
     id: string;

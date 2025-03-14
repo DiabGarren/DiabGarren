@@ -1,6 +1,6 @@
 import { Schema, model, models } from "mongoose";
 
-const bomEngSchema = new Schema(
+const bom1NephiSchema = new Schema(
     {
         lang: String,
         id: String,
@@ -14,8 +14,8 @@ const bomEngSchema = new Schema(
             },
         ],
     },
-    { collection: "bom-eng" }
+    { collection: "bom-1-nephi" }
 );
 
-const bomEng = models.bomEng || model("bomEng", bomEngSchema);
-export default bomEng;
+const bom1Nephi = models.bom1Nephi || model("bom1Nephi", bom1NephiSchema);
+export default bom1Nephi;
