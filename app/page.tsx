@@ -28,6 +28,12 @@ export default function Home() {
             >
                 Book of Mormon
             </a>
+            <a
+                className="button bg-blue hover:text-blue text-center"
+                href="/todo"
+            >
+                ToDo
+            </a>
         </main>
     );
 }

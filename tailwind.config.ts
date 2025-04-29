@@ -66,6 +66,28 @@ const config: Config = {
                         yellow: "#dfce61",
                     },
                 },
+                todo: {
+                    blue: {
+                        DEFAULT: "#0466C8",
+                        2: "#0353A4",
+                        3: "#023E7D",
+                        4: "#002855",
+                        dark: {
+                            DEFAULT: "#001845",
+                            2: "#001233",
+                        },
+                    },
+                    grey: {
+                        DEFAULT: "#979DAC",
+                        2: "#7D8597",
+                        3: "#5C677D",
+                        4: "#33415C",
+                        dark: {
+                            DEFAULT: "#222222",
+                            2: "#343634",
+                        },
+                    },
+                },
             },
             borderRadius: {
                 DEFAULT: "5px",
@@ -219,6 +241,10 @@ const config: Config = {
                 },
                 ".bom-nav-next": {
                     right: "12%",
+                },
+                ".header-blur": {
+                    color: "transparent",
+                    textShadow: "0 0 4px #fff",
                 },
             });
         }),
