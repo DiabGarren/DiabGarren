@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-key */
 "use client";
 import PrintBody from "@/components/3DPrinting/body";
+import ImageFallback from "@/components/3DPrinting/imageFallback";
 import { Item } from "@/lib/3DPrinting/item";
 import { User } from "@/lib/3DPrinting/user";
 import { Select, SelectItem, select } from "@nextui-org/react";
@@ -10,6 +11,23 @@ export default function CreateOrder() {
     const [user, setUser] = useState<User>();
     const [cart, setCart] = useState(0);
     const [items, setItems] = useState<Item[]>([]);
+
+    const [customer, setCustomer] = useState({
+        name: "",
+        phone: "",
+        address: { street: "", suburb: "", city: "", postalCode: "" },
+        shipping: "",
+        shippingCost: 0,
+    });
+    const [order, setOrder] = useState<
+        {
+            name: string;
+            size: string;
+            colour: string;
+            price: number;
+            qty: number;
+        }[]
+    >([]);
 
     const [colours, setColours] = useState<
         {
@@ -83,7 +101,132 @@ export default function CreateOrder() {
 
     return (
         <PrintBody cart={cart} user={user} mainClass={undefined}>
-            <>
+            <h1 className="text-center">Create Order</h1>
+            <div className="">
+                <h2>Customer Details</h2>
+                <label>Name</label>
+                <input
+                    type="text"
+                    className="form-input"
+                    onChange={(event) =>
+                        setCustomer({ ...customer, name: event.target.value })
+                    }
+                />
+                <label>Phone number</label>
+                <input
+                    type="text"
+                    className="form-input"
+                    onChange={(event) =>
+                        setCustomer({ ...customer, phone: event.target.value })
+                    }
+                />
+                <label>Shipping</label>
+                <Select
+                    className="form-input"
+                    onChange={(item) =>
+                        setCustomer({
+                            ...customer,
+                            shipping: item.target.value,
+                            address:
+                                item.target.value === "collect"
+                                    ? {
+                                          street: "",
+                                          suburb: "",
+                                          city: "",
+                                          postalCode: "",
+                                      }
+                                    : customer.address,
+                        })
+                    }
+                >
+                    <SelectItem key={"deliver"}>Deliver</SelectItem>
+                    <SelectItem key={"collect"}>Collect</SelectItem>
+                </Select>
+                {customer.shipping === "deliver" ? (
+                    <>
+                        <h2>Address</h2>
+                        <label>Street</label>
+                        <input
+                            type="text"
+                            className="form-input"
+                            onChange={(event) =>
+                                setCustomer({
+                                    ...customer,
+                                    address: {
+                                        street: event.target.value,
+                                        suburb: customer.address.suburb,
+                                        city: customer.address.city,
+                                        postalCode: customer.address.postalCode,
+                                    },
+                                })
+                            }
+                        />
+                        <label>Suburb</label>
+                        <input
+                            type="text"
+                            className="form-input"
+                            onChange={(event) =>
+                                setCustomer({
+                                    ...customer,
+                                    address: {
+                                        street: customer.address.street,
+                                        suburb: event.target.value,
+                                        city: customer.address.city,
+                                        postalCode: customer.address.postalCode,
+                                    },
+                                })
+                            }
+                        />
+                        <label>City</label>
+                        <input
+                            type="text"
+                            className="form-input"
+                            onChange={(event) =>
+                                setCustomer({
+                                    ...customer,
+                                    address: {
+                                        street: customer.address.street,
+                                        suburb: customer.address.suburb,
+                                        city: event.target.value,
+                                        postalCode: customer.address.postalCode,
+                                    },
+                                })
+                            }
+                        />
+                        <label>Postal Code</label>
+                        <input
+                            type="text"
+                            className="form-input"
+                            onChange={(event) =>
+                                setCustomer({
+                                    ...customer,
+                                    address: {
+                                        street: customer.address.street,
+                                        suburb: customer.address.suburb,
+                                        postalCode: event.target.value,
+                                        city: customer.address.city,
+                                    },
+                                })
+                            }
+                        />
+                    </>
+                ) : (
+                    <></>
+                )}
+                <label>Shipping Cost</label>
+                <input
+                    type="number"
+                    className="form-input"
+                    onChange={(event) =>
+                        setCustomer({
+                            ...customer,
+                            shippingCost: parseInt(event.target.value),
+                        })
+                    }
+                />
+            </div>
+            <div className="my-[25px]">
+                <h2>Item Details</h2>
                 <Select
                     label="Select an item"
                     onChange={(item) => {
@@ -138,8 +281,19 @@ export default function CreateOrder() {
 
                 {selectedItem ? (
                     <>
+                        {selectedItem._id !== "Custom" ? (
+                            <div>
+                                <ImageFallback
+                                    src={selectedItem.images[0]}
+                                    width={150}
+                                />
+                            </div>
+                        ) : (
+                            <></>
+                        )}
+
                         <div className="my-[15px]">
-                            <h2>Name</h2>
+                            <label>Name</label>
                             {selectedItem.name ? (
                                 <p>{choice?.name}</p>
                             ) : (
@@ -159,13 +313,13 @@ export default function CreateOrder() {
                             )}
                         </div>
                         <div className="my-[15px]">
-                            <h2>
+                            <label>
                                 Size (
                                 {selectedItem?._id == "Custom" ? "mm" : "cm"}){" "}
                                 <span className="text-[15px]">
                                     (length x width x height)
                                 </span>
-                            </h2>
+                            </label>
                             <div className="flex flex-wrap gap-[10px]">
                                 {selectedItem.options ? (
                                     selectedItem.options.map(
@@ -236,7 +390,7 @@ export default function CreateOrder() {
                             </div>
                         </div>
                         <div className="my-[15px]">
-                            <h2>Colour</h2>
+                            <label>Colour</label>
                             <div className="flex flex-wrap gap-[10px]">
                                 {selectedItem.colours &&
                                 selectedItem.colours.length > 0
@@ -311,7 +465,7 @@ export default function CreateOrder() {
                             </div>
                         </div>
                         <div className="my-[15px]">
-                            <h2>Price</h2>
+                            <label>Price</label>
                             {selectedItem?._id == "Custom" ? (
                                 <input
                                     type="number"
@@ -338,7 +492,7 @@ export default function CreateOrder() {
                             )}
                         </div>
                         <div className="my-[15px]">
-                            <h2>Qty</h2>
+                            <label>Qty</label>
                             <input
                                 type="number"
                                 className="form-input"
@@ -359,7 +513,7 @@ export default function CreateOrder() {
                 ) : (
                     <></>
                 )}
-            </>
+            </div>
         </PrintBody>
     );
 }

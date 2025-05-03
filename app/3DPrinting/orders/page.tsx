@@ -25,6 +25,8 @@ export default function OrdersPage() {
                 },
             ],
             shipping: "",
+            shippingCost: 0,
+            address: "",
             total: 0,
             status: "",
         },

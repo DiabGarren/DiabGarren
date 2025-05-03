@@ -4,6 +4,7 @@ const OrderSchema = new Schema(
     {
         userId: String,
         name: String,
+        phone: String,
         date: String,
         order: [
             {
@@ -19,6 +20,12 @@ const OrderSchema = new Schema(
         ],
         shipping: String,
         shippingCost: Number,
+        address: {
+            street: String,
+            suburb: String,
+            city: String,
+            postalCode: String,
+        },
         total: Number,
         status: String,
     },

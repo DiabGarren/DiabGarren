@@ -3,19 +3,23 @@
 @tailwind utilities;
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body {
-  background-color: #ffffff;
+    background-color: #ffffff;
+}
+
+h1 {
+    font-size: 25px;
 }
 
 h2 {
-  font-size: 20px;
+    font-size: 20px;
 }
 
 @media print {
-  .no-print {
-    display: none;
-  }
+    .no-print {
+        display: none;
+    }
 }

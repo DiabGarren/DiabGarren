@@ -244,7 +244,7 @@ const config: Config = {
                 },
                 ".header-blur": {
                     color: "transparent",
-                    textShadow: "0 0 4px #fff",
+                    textShadow: "0 0 8px #fff",
                 },
             });
         }),

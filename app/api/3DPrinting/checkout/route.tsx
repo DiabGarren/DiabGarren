@@ -71,11 +71,14 @@ export async function POST(request: Request) {
         await Order.create({
             userId: user.id,
             name: `${user.firstName} ${user.lastName}`,
+            phone: "",
             date: new Date(),
             order: order,
             shipping: body.shipping,
+            shippingCost: body.shippingCost,
+            address: { street: "", suburb: "", city: "", postalCode: "" },
             total: total,
-            status: "Recieved",
+            status: "recieved",
         });
 
         sgMail.setApiKey(`${process.env.SENDGRID_API}`);

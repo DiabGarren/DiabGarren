@@ -15,19 +15,7 @@ export default function ToDoHeader() {
                     ToDo_
                 </h1>
             </div>
-            <svg
-                className="absolute z-[2]"
-                xmlns="http://www.w3.org/2000/svg"
-                width="320"
-                height="47"
-                viewBox="0 0 320 47"
-                fill="none"
-            >
-                <path
-                    d="M0 7H320M320 40H0M320 10H0M320 13H0M320 16H0M320 19H0M320 22H0M320 25H0M320 28H0M320 31H0M320 34H0M320 37H0M320 43H0M320 4H0M320 1H0M320 46H0"
-                    stroke="#002855"
-                />
-            </svg>
+            <div className="absolute w-[100%] h-[50px] bg-[url('/todo/ScanLines.svg')] z-[2]"></div>
             <div className="absolute grid grid-cols-[60px_1fr] z-[1]">
                 <Image
                     className="m-[7px_0_0_13px]"
