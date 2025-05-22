@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Poetsen+One&family=Varela+Round&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --primary: #0466c8;
+    --primary-dark: #0353a4;
+    --secondary: #001845;
+    --secondary-dark: #001233;
+    --tertiary: #023e7d;
+    --tertiary-dark: #002855;
+
+    --white: #eeeeee;
+    --white-dark: #222222;
+    --grey: #5c677d;
+    --grey-dark: #343634;
+}
+
+body {
+    background-color: var(--white);
+    font-family: "Varela Round", sans-serif;
+}
+
+header {
+    background-color: var(--primary-dark);
+    font-family: "Poetsen One", sans-serif;
+}
+
+main {
+    margin: 20px 5px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: "Poetsen One", sans-serif !important;
+}
+
+h1 {
+    @media only screen and (max-width: 375px) {
+        font-size: 32px;
+    }
+}
+
+h2 {
+    @media only screen and (max-width: 375px) {
+        font-size: 20px;
+    }
+}
+
+h3 {
+    @media only screen and (max-width: 375px) {
+        font-size: 18px;
+    }
+}
+
+.button {
+    padding: 5px;
+    border-radius: 10px !important;
+    text-align: center;
+}
+
+Button {
+    &.green {
+        background-color: #58f18b;
+        color: #222;
+    }
+    &.green:hover {
+        background-color: #2e8049;
+        color: #f3f3f3;
+        text-decoration: underline;
+    }
+}
+
+form {
+    & > * {
+        font-family: "Varela Round", sans-serif;
+        font-size: 18px;
+        margin: 10px 0;
+    }
+    input {
+        padding-left: 8px;
+        border-bottom: none !important;
+    }
+    & > button {
+        margin-top: 20px;
+    }
+}

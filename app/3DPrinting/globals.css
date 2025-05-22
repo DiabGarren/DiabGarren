@@ -6,6 +6,13 @@
     box-sizing: border-box;
 }
 
+:root {
+    --primary: #00799f;
+    --rounded: 5px;
+    --rounded-md: 10px;
+    --input-underline: 2px solid #51726b;
+}
+
 body {
     background-color: #ffffff;
 }
@@ -23,3 +30,32 @@ h2 {
         display: none;
     }
 }
+
+a.button,
+button.button {
+    display: block;
+    /* background-color: var(--primary); */
+    color: white;
+    min-width: 65px;
+    width: 100%;
+    padding: 8px 25px;
+    /* text-align: center; */
+    border-radius: var(--rounded);
+    border-width: 2px;
+    cursor: pointer;
+
+    transition: all 0.2s;
+}
+
+a.button:hover,
+button.button {
+    background-color: white;
+    /* color: var(--primary); */
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    border-bottom: var(--input-underline);
+}
+

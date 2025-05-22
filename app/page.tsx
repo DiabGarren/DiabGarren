@@ -7,6 +7,12 @@ export default function Home() {
             >
                 3D Printing
             </a>
+            <a
+                className="button bg-blue hover:text-blue text-center"
+                href="/DiabMotors"
+            >
+                Diab Motors
+            </a>
         </main>
     );
 }
