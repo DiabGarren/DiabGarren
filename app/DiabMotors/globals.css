@@ -89,3 +89,28 @@ form {
         margin-top: 20px;
     }
 }
+
+.car-card {
+    width: 150px;
+    border: 2px solid var(--secondary-dark);
+    border-radius: 10px;
+    & > div.thumbnail {
+        width: 100%;
+        aspect-ratio: 4/3;
+    }
+    & > p {
+        padding: 5px;
+        background-color: var(--primary);
+        color: var(--white);
+        border-radius: 0 0 8px 8px;
+        text-align: center;
+        & span.car-title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        & span.car-year {
+            font-size: 18px;
+            font-style: italic;
+        }
+    }
+}

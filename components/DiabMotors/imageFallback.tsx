@@ -4,11 +4,10 @@ import Image from "next/image";
 export default function ImageFallback(props: any) {
     return (
         <Image
-            className=""
+            className={`object-cover ${props.className}`}
             src={`/DiabMotors/cars/${props.src ? props.src : "NoImage.png"}`}
             alt={`Thumbnail for ${props.name}`}
-            width={props.width}
-            height={props.height}
+            fill={true}
         />
     );
 }

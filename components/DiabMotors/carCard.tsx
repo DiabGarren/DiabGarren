@@ -2,19 +2,19 @@ import ImageFallback from "./imageFallback";
 
 export default function CarCard(props: any) {
     return (
-        <a href={`/DiabMotors/car/${props._id}`}>
-            <div
-                className={`h-[60px] bg-[url('/DiabMotors/cars/${props.image}')]`}
-            >
+        <a href={`/DiabMotors/car/${props._id}`} className="car-card">
+            <div className="thumbnail relative">
                 <ImageFallback
+                    className={"rounded-t-[8px]"}
                     name={`${props.make} ${props.model}`}
                     src={props.image}
-                    width={60}
-                    height={60}
                 />
             </div>
+
             <p>
-                <span>{props.make}</span> <span>{props.model}</span>
+                <span className="car-title">
+                    {props.make} {props.model}
+                </span>
             </p>
         </a>
     );
