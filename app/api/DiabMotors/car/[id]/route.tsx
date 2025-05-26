@@ -38,7 +38,7 @@ export async function PUT(
         const id = params.id;
         const body = await request.json();
 
-        const car = Car.updateOne(
+        const car = await Car.updateOne(
             { _id: id },
             {
                 make: body.make,
