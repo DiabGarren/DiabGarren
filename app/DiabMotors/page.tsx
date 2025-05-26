@@ -19,7 +19,9 @@ export default function Home() {
                     if (data.status == "success") {
                         setCars(
                             data.data.sort((a: any, b: any) => {
-                                return a.make > b.make ? 1 : -1;
+                                if (a.make == b.make)
+                                    return a.model > b.model ? 1 : -1;
+                                else return a.make > b.make ? 1 : -1;
                             })
                         );
                     }
