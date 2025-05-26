@@ -26,11 +26,11 @@ export default function Home() {
             <Header />
             <main>
                 {cars.length > 0 ? (
-                    <>
+                    <div className="flex gap-[5px]">
                         {cars.map((car: any) => {
                             return <CarCard {...car} />;
                         })}
-                    </>
+                    </div>
                 ) : (
                     <h2>No cars added</h2>
                 )}

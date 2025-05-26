@@ -85,7 +85,7 @@ export async function PUT(
                     fuel: body.engine.fuel,
                 },
                 driveType: body.driveType,
-                image: body.image,
+                image: `${body.make}${body.model}.jpg`,
                 registration: body.registration,
             }
         );

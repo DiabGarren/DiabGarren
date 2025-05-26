@@ -21,6 +21,7 @@ export default function Page() {
         { key: "Front Wheel", label: "Front Wheel Drive" },
         { key: "Rear Wheel", label: "Rear Wheel Drive" },
         { key: "Four Wheel", label: "Four Wheel Drive" },
+        { key: "All Wheel", label: "All Wheel Drive" },
     ];
     const config = [
         { key: "Inline", label: "Inline" },

@@ -1,17 +1,14 @@
-export default function CarCard(props: {
-    _id: any;
-    make: string;
-    model: string;
-    year: string;
-    colour: string;
-    engine: { config: string; cylinders: string; size: string; fuel: string };
-    driveType: string;
-    image: string;
-    registration: string;
-}) {
+import Image from "next/image";
+
+export default function CarCard(props: any) {
+    console.log(props.image);
+
     return (
         <div>
             <p>
+                <div
+                    className={`h-[60px] bg-[url(/DiabMotors/cars/${props.image})]`}
+                ></div>
                 <span>{props.make}</span> <span>{props.model}</span>
             </p>
         </div>
