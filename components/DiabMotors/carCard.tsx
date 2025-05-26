@@ -13,7 +13,9 @@ export default function CarCard(props: any) {
 
             <div className="car-title">
                 <p>
-                    {props.make} {props.model}
+                    <span className="car-make">{props.make}</span>
+                    <br />
+                    <span className="car-model">{props.model}</span>
                 </p>
             </div>
         </a>

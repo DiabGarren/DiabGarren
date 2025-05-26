@@ -94,7 +94,7 @@ form {
     width: 150px;
     border: 2px solid var(--secondary-dark);
     border-radius: 10px;
-    background-color: var(--primary);
+    background-color: var(--primary-dark);
 
     & > div.car-thumbnail {
         width: 100%;
@@ -102,13 +102,21 @@ form {
     }
 
     & > div.car-title {
-        padding: 5px;
+        padding: 5px 0;
 
         & > p {
             color: var(--white);
             text-align: center;
-            font-size: 18px;
-            font-weight: bold;
+            line-height: 22px;
+
+            & span.car-make {
+                font-size: 18px;
+                font-weight: bold;
+            }
+
+            & span.car-model {
+                font-size: 16px;
+            }
         }
     }
 
