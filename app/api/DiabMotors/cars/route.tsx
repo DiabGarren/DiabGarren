@@ -42,7 +42,7 @@ export async function POST(request: Request) {
                 fuel: body.engine.fuel,
             },
             driveType: body.driveType,
-            image: `${body.make}${body.model}.jpg`,
+            image: `${body.make}.jpg`,
             registration: body.registration,
         });
 
