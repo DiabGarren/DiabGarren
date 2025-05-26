@@ -35,7 +35,7 @@ export default function Home() {
             <Header />
             <main>
                 {cars.length > 0 ? (
-                    <div className="flex gap-[5px] justify-center">
+                    <div className="flex flex-wrap gap-[5px] justify-center">
                         {cars.map((car: any) => {
                             return <CarCard {...car} />;
                         })}

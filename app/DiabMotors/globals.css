@@ -22,8 +22,11 @@
     --green-dark: #2e8049;
 }
 
-body {
+html {
     background-color: var(--white);
+}
+
+body {
     font-family: "Varela Round", sans-serif;
 }
 
