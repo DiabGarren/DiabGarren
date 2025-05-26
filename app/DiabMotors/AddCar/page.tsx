@@ -67,7 +67,8 @@ export default function Page() {
                     onSubmit={async (event) => {
                         event.preventDefault();
                         const res = await fetch(
-                            process.env.NEXT_PUBLIC_API_URL + "/DiabMotors/car",
+                            process.env.NEXT_PUBLIC_API_URL +
+                                "/DiabMotors/cars",
                             { method: "POST", body: JSON.stringify(car) }
                         );
 

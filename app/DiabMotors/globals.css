@@ -15,7 +15,11 @@
     --white: #eeeeee;
     --white-dark: #222222;
     --grey: #5c677d;
+    --grey-light: #cbd2e2;
     --grey-dark: #343634;
+
+    --green: #58f18b;
+    --green-dark: #2e8049;
 }
 
 body {
@@ -57,20 +61,17 @@ h3 {
     }
 }
 
-.button {
-    padding: 5px;
-    border-radius: 10px !important;
-    text-align: center;
-}
-
 Button {
+    font-size: 16px !important;
+
     &.green {
-        background-color: #58f18b;
-        color: #222;
+        background-color: var(--green);
+        color: var(--grey-dark);
     }
+
     &.green:hover {
-        background-color: #2e8049;
-        color: #f3f3f3;
+        background-color: var(--green-dark);
+        color: var(--white);
         text-decoration: underline;
     }
 }
@@ -81,10 +82,12 @@ form {
         font-size: 18px;
         margin: 10px 0;
     }
+
     input {
         padding-left: 8px;
         border-bottom: none !important;
     }
+
     & > button {
         margin-top: 20px;
     }
@@ -122,5 +125,36 @@ form {
 
     &:hover {
         background-color: var(--secondary-dark);
+    }
+}
+
+.car-details {
+    width: 90%;
+    margin-inline: auto;
+
+    & .car-details-row:nth-child(2n-1) {
+        background-color: var(--grey-light);
+        border-radius: 5px;
+    }
+
+    & .car-details-row {
+        display: flex;
+        align-items: center;
+        & .car-details-column {
+            padding: 0 10px;
+        }
+
+        & .car-details-column:first-child {
+            width: 50%;
+            font-family: "Poetsen One", sans-serif;
+            font-size: 18px;
+        }
+
+        & .car-details-column:last-child {
+            width: 50%;
+            font-family: "Varela Round", sans-serif;
+            font-size: 16px;
+            text-align: right;
+        }
     }
 }

@@ -3,8 +3,12 @@
 import CarCard from "@/components/DiabMotors/carCard";
 import Header from "@/components/DiabMotors/header";
 import { useEffect, useState } from "react";
+import { Button } from "@nextui-org/react";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function Home() {
+    const { push } = useRouter();
     const [cars, setCars] = useState([]);
 
     useEffect(() => {
@@ -13,30 +17,44 @@ export default function Home() {
                 .then((res) => res.json())
                 .then((data) => {
                     if (data.status == "success") {
-                        setCars(data.data);
+                        setCars(
+                            data.data.sort((a: any, b: any) => {
+                                return a.make > b.make ? 1 : -1;
+                            })
+                        );
                     }
                 });
         };
         getCars();
     }, []);
-    console.log(cars);
 
     return (
         <>
             <Header />
             <main>
                 {cars.length > 0 ? (
-                    <div className="flex gap-[5px]">
+                    <div className="flex gap-[5px] justify-center">
                         {cars.map((car: any) => {
                             return <CarCard {...car} />;
                         })}
                     </div>
                 ) : (
-                    <h2>No cars added</h2>
+                    <div className="flex justify-center items-center gap-[10px]">
+                        <h2>Loading Cars...</h2>
+                        <Image
+                            src="/DiabMotors/loading.gif"
+                            alt="loading icon"
+                            width={100}
+                            height={30}
+                        />
+                    </div>
                 )}
-                <a href="/DiabMotors/AddCar" className="button green">
+                <Button
+                    className="green w-[100%] mt-[20px]"
+                    onPress={() => push("/DiabMotors/addCar")}
+                >
                     Add New Car
-                </a>
+                </Button>
             </main>
         </>
     );
