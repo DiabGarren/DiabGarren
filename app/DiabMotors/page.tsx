@@ -33,9 +33,9 @@ export default function Home() {
     return (
         <>
             <Header />
-            <main>
+            <main className="w-[90%] xsm:w-[85%] sm:w-[80%] mx-auto">
                 {cars.length > 0 ? (
-                    <div className="flex flex-wrap gap-[5px] justify-center">
+                    <div className="flex flex-wrap gap-[10px_5px] justify-center">
                         {cars.map((car: any) => {
                             return <CarCard {...car} />;
                         })}
@@ -52,7 +52,7 @@ export default function Home() {
                     </div>
                 )}
                 <Button
-                    className="green w-[100%] mt-[20px]"
+                    className="green w-[100%] sm:w-[300px] mt-[20px] mx-auto sm:block"
                     onPress={() => push("/DiabMotors/addCar")}
                 >
                     Add New Car

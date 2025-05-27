@@ -4,7 +4,7 @@ const maintenanceSchema = new Schema(
     {
         carId: String,
         date: String,
-        odometer: Number,
+        odometer: String,
         name: String,
         description: String,
     },

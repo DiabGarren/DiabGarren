@@ -3,6 +3,7 @@ import Header from "@/components/DiabMotors/header";
 import { useState } from "react";
 import { Button, Input, Select, SelectItem } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
+import Back from "@/components/DiabMotors/back";
 
 export default function Page() {
     const { push } = useRouter();
@@ -61,7 +62,8 @@ export default function Page() {
     return (
         <>
             <Header />
-            <main>
+            <main className="w-[90%] xsm:w-[85%] sm:w-[80%] mx-auto">
+                <Back href={""} />
                 <h2 className="text-center">Add a New Car</h2>
                 <form
                     onSubmit={async (event) => {
