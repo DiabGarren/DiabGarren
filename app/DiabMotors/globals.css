@@ -37,9 +37,11 @@ body {
     font-family: "Varela Round", sans-serif;
 }
 
-header {
+header,
+footer {
     background-color: var(--primary-dark);
     font-family: "Poetsen One", sans-serif;
+    height: 70px;
 }
 
 main {

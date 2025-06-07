@@ -1,4 +1,5 @@
 "use client";
+import Footer from "@/components/DiabMotors/footer";
 import Header from "@/components/DiabMotors/header";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
@@ -11,7 +12,7 @@ export default function Page({ params }: { params: { id: string } }) {
     }, []);
     return (
         <>
-            <Header /> <main></main>
+            <Header /> <main></main> <Footer />
         </>
     );
 }

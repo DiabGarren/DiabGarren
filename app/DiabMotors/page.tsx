@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Button } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import Footer from "@/components/DiabMotors/footer";
 
 export default function Home() {
     const { push } = useRouter();
@@ -58,6 +59,7 @@ export default function Home() {
                     Add New Car
                 </Button>
             </main>
+            <Footer />
         </>
     );
 }

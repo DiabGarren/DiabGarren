@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Button, Input, Select, SelectItem } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 import Back from "@/components/DiabMotors/back";
+import Footer from "@/components/DiabMotors/footer";
 
 export default function Page() {
     const { push } = useRouter();
@@ -229,6 +230,7 @@ export default function Page() {
                     </Button>
                 </form>
             </main>
+            <Footer />
         </>
     );
 }

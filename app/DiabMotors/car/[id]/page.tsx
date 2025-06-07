@@ -8,6 +8,7 @@ import { DatePicker } from "@heroui/react";
 import Image from "next/image";
 import Back from "@/components/DiabMotors/back";
 import { useRouter } from "next/navigation";
+import Footer from "@/components/DiabMotors/footer";
 
 export default function Car({ params }: { params: { id: string } }) {
     const { push } = useRouter();
@@ -726,6 +727,7 @@ export default function Car({ params }: { params: { id: string } }) {
                     </>
                 )}
             </main>
+            <Footer />
         </>
     );
 }
