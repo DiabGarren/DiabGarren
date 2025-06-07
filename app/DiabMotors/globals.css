@@ -197,7 +197,9 @@ form {
 
 .maintenance-card {
     width: 100%;
+    max-width: 450px;
     margin-inline: auto;
+    margin-block: 10px;
 
     @media only screen and (min-width: 375px) {
         width: 90%;

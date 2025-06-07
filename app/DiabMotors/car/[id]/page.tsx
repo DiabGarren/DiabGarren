@@ -105,14 +105,48 @@ export default function Car({ params }: { params: { id: string } }) {
             )
                 .then((res) => res.json())
                 .then((data) => {
-                    if (data.status == "success") setMaintenance(data.data);
+                    if (data.status == "success")
+                        setMaintenance(
+                            data.data.reverse().sort((a: any, b: any) => {
+                                if (
+                                    parseInt(a.date.split("/")[2]) ==
+                                    parseInt(b.date.split("/")[2])
+                                ) {
+                                    if (
+                                        parseInt(a.date.split("/")[1]) ==
+                                        parseInt(b.date.split("/")[1])
+                                    ) {
+                                        if (
+                                            parseInt(a.date.split("/")[0]) >=
+                                            parseInt(b.date.split("/")[0])
+                                        ) {
+                                            return 1;
+                                        } else {
+                                            return -1;
+                                        }
+                                    } else if (
+                                        parseInt(a.date.split("/")[1]) >
+                                        parseInt(b.date.split("/")[1])
+                                    ) {
+                                        return 1;
+                                    } else {
+                                        return -1;
+                                    }
+                                } else if (
+                                    parseInt(a.date.split("/")[2]) >
+                                    parseInt(b.date.split("/")[2])
+                                ) {
+                                    return 1;
+                                } else {
+                                    return -1;
+                                }
+                            })
+                        );
                 });
         };
         getCar();
         getMaintenance();
     }, []);
-
-    console.log(maintenance);
 
     return (
         <>
@@ -529,9 +563,8 @@ export default function Car({ params }: { params: { id: string } }) {
                                                         <div className="maintenance-card-details">
                                                             <h3>{item.name}</h3>
                                                             <p>
-                                                                {
-                                                                    item.description
-                                                                }
+                                                                {item.description ||
+                                                                    "..."}
                                                             </p>
                                                             <button
                                                                 className="red maintenance-card-delete"
