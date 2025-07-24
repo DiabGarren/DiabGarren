@@ -21,7 +21,7 @@
     "eslint-config-next": "14.0.4",
     "framer-motion": "^11.0.24",
     "mongoose": "^8.0.3",
-    "next": "14.0.4",
+    "next": "^15.4.2",
     "postcss": "8.4.32",
     "postcss-import": "^16.1.0",
     "postcss-nesting": "^13.0.1",
