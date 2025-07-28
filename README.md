@@ -1,4 +1,4 @@
-Learing to code One Project at a time
+# Learing to code One Project at a time
 
 ## Languages
 - Java
