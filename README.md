@@ -6,7 +6,7 @@
 - C#
 - JavaScript/TypeScript
 
-### Web Development
+## Web Development
 - HTML
 - CSS
 - JS
